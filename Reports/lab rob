@@ -5,3 +5,13 @@ left eth0
 45.4
 
 10.0.0.10
+
+para ver log
+	dmesg
+
+para installar
+	click-install x
+	click-uninstall x
+
+para ver threads de kernel
+	ps -ef | grep "\[" 
