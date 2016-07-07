@@ -20,7 +20,7 @@ TAIL = bytearray(1472)
 
 IF_ONE_ENCODE_INFO = 1
 
-AVAILABLE_FILES = ('trace.txt','minitrace.txt','microtrace.txt','microtrace2.txt','yankdummy.txt')
+AVAILABLE_FILES = ('trace.txt','minitrace.txt','microtrace.txt','microtrace2.txt','dummytrace_6.txt')
 CHOSEN_FILE = 4
 
 NUMBER_OF_LINES = 0
