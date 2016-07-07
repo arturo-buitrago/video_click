@@ -13,5 +13,10 @@ para installar
 	click-install x
 	click-uninstall x
 
+	sudo click-install video_click/click_files/Router_configs/b_f_test_kernel.click
+
+
+
+
 para ver threads de kernel
 	ps -ef | grep "\[" 
