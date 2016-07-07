@@ -9,6 +9,8 @@ import scapy.all
 
 import string
 
+import time
+
 import socket
 
 DROPPED_PKGS = 0
@@ -20,8 +22,8 @@ TAIL = bytearray(1472)
 
 IF_ONE_ENCODE_INFO = 1
 
-AVAILABLE_FILES = ('trace.txt','minitrace.txt','microtrace.txt','microtrace2.txt','dummytrace_6.txt')
-CHOSEN_FILE = 4
+AVAILABLE_FILES = ('trace.txt','dummytrace_6.txt')
+CHOSEN_FILE = 1
 
 NUMBER_OF_LINES = 0
 
@@ -135,6 +137,9 @@ if __name__ == "__main__":
 	#print('here goes nothing')
 	#print("d4c3 b2a1 0200 0400 0000 0000 0000 0000 d007 0000 0c00 0000")
 	#print('well ok')
+	print("Will send %i. %s in 3 seconds." % (CHOSEN_FILE, AVAILABLE_FILES[CHOSEN_FILE]))
+	time.sleep(3)
+
 	print(len(TAIL))
 	readtrace()
 	print("dropped %i" % DROPPED_PKGS)
