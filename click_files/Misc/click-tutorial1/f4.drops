@@ -1,0 +1,17 @@
+Dropped IP packets
+2
+
+Dropped TCP packets
+1556
+
+Dropped UDP packets
+353
+
+Dropped ICMP packets
+2
+
+Dropped packets due to TTL
+3
+
+Dropped packets due to length
+7

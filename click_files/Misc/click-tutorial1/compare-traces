@@ -1,0 +1,40 @@
+#! /bin/sh
+
+usage () {
+    echo "Usage: compare-traces TRACE1 TRACE2" 1>&2
+    exit 1
+}
+
+problem=NONE
+compareargs=""
+if [ "$1" = -t ]; then
+    compareargs="TIMESTAMP false"
+    shift 1
+fi
+if [ "$1" = "-p" ]; then
+    problem="$2"
+    shift 2
+fi
+
+if [ $# != 2 ]; then usage; fi
+
+click -e "
+f1 :: FromDump($1, STOP true);
+f2 :: FromDump($2, STOP true);
+cmp :: ComparePackets($compareargs);
+rr :: RoundRobinSched;
+f1 -> [0]cmp[0] -> [0]rr; f2 -> [1]cmp[1] -> [1]rr;
+rr -> Discard;
+DriverManager(wait_stop 2);
+" -x cmp.all_same
+
+val=$?
+if [ $problem != NONE ]; then
+    if [ $val = 0 ]; then
+	echo "--- Problem $problem Success: $1 == $2" 1>&2
+    else
+	echo "*** Problem $problem Failure: $1 != $2" 1>&2
+    fi
+fi
+
+exit $val

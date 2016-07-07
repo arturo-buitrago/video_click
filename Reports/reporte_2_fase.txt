@@ -1,0 +1,53 @@
+
+The packets are wrapped in the most unobtrusive way possible, with help from 'scapy' (only available for Python 2!) and a small Python script, which was then used to send the packets through a UDP socket in the loopback and captured with help from wireshark. Once captured, the packets were exported in the form of a .pcap file which could then be read by the "FromDump()" element. Other forms of importing the packets into Click was deemed too unwieldy.
+
+The packets themselves have exactly the size specified by the given traces (including the UDP header so that removing them is not necessary). This also includes the tail end of frames, which are often smaller than the rest of the packages, for obvious reasons.
+
+Lines in the trace belonging to the "-100" lines as well as the ones that detail the whole frame and not its individual packets (segment number -1) are not taken into account.
+
+Despite the fact that UDP does not represent a realisitic implementation of the video file transfer, seeing as the files being worked on are filled with dummy data, the relative convenience overweighed any other (minor) concerns. 
+
+The structure of the packets is as follows:
+
+Bytes [0-13] : Ethernet Header
+Bytes [14 - 33] : IPv4 Header
+Bytes [34 - 41] : UDP Header
+
+Then comes the actual Video Trace Packet Header
+
+Bytes [42 - 45] : Frame Identifier
+	This one's binary (0 for non-keyframe 1 for keyframe) so the only byte that counts is number 45. Coded as an int.
+Bytes [46 - 49] : Frame Number
+	The number of frame, monitored to make sure packets aren't scrambled along the way. Coded as an int.
+Bytes [50 - 53] : Segment Number
+	The frame is already segmented, we keep track of the segment number so that we don't have to check the queue for packages to drop too often. Coded as an int.
+Bytes [54 - 57] : Packet Size
+	For most packets its 1538 Bytes. Coded as a long.
+Bytes [58 - 61] : Event Ocurred
+	Uninteresting to us. Coded as a float.
+Bytes [62 - 65] : Map to sampling time
+	Ditto. Coded as float.
+
+
+Once inside the router, accessing the data of the packets is relatively simple, especially with the p->data(); function, which points to the start of the packet data. Of special importance are to us the first three numbers.
+
+Much more problematic was the flushing of the Queue. Despite much (can't stress this enough) tinkering around with much of the native Queue elements, the most promising possibility was the use of the yank function in the SimpleQueue element. The limited documentation made progress painfully slow, but it turned out that the filter used by the aforementioned function demands a very static pattern to detect the packets to be yanked, so that its use was impossible without some heavy redesigning.
+
+This led to the decision of implementing an implicit queue within the deciding element already being developed, leaning heavily on the "Deque" element (only documented in the Doxygen page, and available through the newest version obtainable through git, but NOT in the main click page). 
+
+The deciding element thus works in the following way:
+
+An agnostic element that functions almost identically to a rudamentary queue, with one output and one input, receives a package from upstream. The package is checked to see if it is a keyframe or not. If not, it is pushed into the queue and the number of non-keyframes since the last keyframe is incremented. If it is a keyframe, it checks whether the frame starts a segment. If it doesn't it gets pushed, if it does, it's controlled for scrambling of packets and then the buffer flush is called, based on the number of non-keyframe packets that came before it. After the flushing is done, the package is finally pushed onto the queue.
+
+As a normal queue, any pull attempt gives the element that is at the front of the queue.
+The flow of packages, especially the bandwidth both before and after the decider element can be easily regulated with the "BandwidthShaper" element.
+
+Thus we have an element that implements the buffer flushing according to specifications.
+
+Terminal Screenshots with a simple router and click_chatter statements.
+
+The dummy packets used follow the simple order
+
+0 -> 0 -> 1 -> 0 -> 1 -> 0 -> 0 -> 0
+
+As we can see, buffer flushes are called when expected, when a new keyframe gets to the element. In the first instance, no real flush is necessary, because the queue is empty. In the second case, however, the unwanted non-keyframe is promptly flushed into the void whence it came and the keyframe is fast-tracked to its destination.

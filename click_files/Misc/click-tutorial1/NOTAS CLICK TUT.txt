@@ -1,0 +1,41 @@
+NOTAS CLICK TUT
+
+1. Trace Files (prob1.click)
+	Nada mas mueve los datos de un dumpfile a otro
+
+	FromDump (http://read.cs.ucla.edu/click/elements/fromdump) 
+		Lee paquetes de un .dump y los manda a algun otro lado
+
+	ToDump (http://read.cs.ucla.edu/click/elements/todump)
+		Escribe paquetes que vienen a un .dump.
+
+2. Routing (prob2.click)
+	Lee paquetes de f2a.dump y los routea siguiendo una cierta routing table
+	131.0.0.0/8 -> f2b.dump
+	131.179.0.0/16 -> f2c.dump
+	18.0.0.0/8 -> f2d.dump
+	otros -> f2e.dump
+
+	RadixIPLookup (read.cs.ucla.edu/click/elements/radixiplookup)
+		RadixIPLookup(ADDR1/MASK1 [GW1] OUT1, ADDR2/MASK2 [GW2] OUT2, ...) 
+		Al parecer por como traversa el arbol es mejor usar este que algun otro metodo linear.
+		Hace IP lookup siguiendo un radix tree
+
+3. Error checking (prob3.click)
+	Lee paquetes de f3a.dump y segun el error que encuentra los trata de forma diferente.
+	Problem 								Action
+	Invalid IP header or checksum 			Discard packet
+	Invalid TCP header or checksum 			Discard packet
+	Invalid UDP header or checksum 			Discard packet
+	Invalid ICMP header or checksum 		Discard packet
+	Expired IP TTL 							Generate appropriate ICMP error message, send message to ‘f3f.dump’
+	Packet longer than 1500 bytes 			Discard packet 
+
+	ok aqui caen un monton de elementos nuevos
+
+	CheckIPHeader (http://read.cs.ucla.edu/click/elements/checkipheader)
+		revisa si los paquetes que le estan llegando tienen headers validos para IP
+		" CheckIPHeader emits valid packets on output 0. Invalid packets are pushed out on output 1, unless output 1 was unused; if so, drops invalid packets"
+		Lo usamos nada mas como el primer filtro para estar seguros de que no esntre ninguna estupidez!
+
+	
