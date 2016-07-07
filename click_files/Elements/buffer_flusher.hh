@@ -1,19 +1,19 @@
-#ifndef CLICK_SIMPLEPUSHYANKER_HH
-#define CLICK_SIMPLEPUSHYANKER_HH
+#ifndef CLICK_BUFFER_FLUSHER_HH
+#define CLICK_BUFFER_FLUSHER_HH
 #include <click/element.hh>
 #include "elements/standard/simplequeue.hh"
 CLICK_DECLS
 
-class SimplePushYanker : public Element { 
+class Buffer_Flusher : public Element { 
 	public:
-		SimplePushYanker();
-		~SimplePushYanker();
+		Buffer_Flusher();
+		~Buffer_Flusher();
 		
 
 		//inline Packet* deqyank();
 
 
-		const char *class_name() const	{ return "SimplePushYanker"; }
+		const char *class_name() const	{ return "Buffer_Flusher"; }
 		const char *port_count() const	{ return "1/1"; }
 		const char *processing() const	{ return "h/lh"; }
 		int configure(Vector<String>&, ErrorHandler*);

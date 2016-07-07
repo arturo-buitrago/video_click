@@ -3,7 +3,7 @@
 #include <click/error.hh>
 #include <click/args.hh>
 #include <click/deque.hh>
-#include "simplepushyanker.hh"
+#include "buffer_flusher.hh"
 
 int32_t last_keyframe_id = -1;
 //int nonkeyframenumber = 1;
@@ -14,13 +14,13 @@ Deque<Packet *> queue;
 
 
 CLICK_DECLS
-SimplePushYanker::SimplePushYanker()
+Buffer_Flusher::Buffer_Flusher()
 {}
 
-SimplePushYanker::~ SimplePushYanker()
+Buffer_Flusher::~ Buffer_Flusher()
 {}
 
-int SimplePushYanker::configure(Vector<String> &conf, ErrorHandler *errh) {
+int Buffer_Flusher::configure(Vector<String> &conf, ErrorHandler *errh) {
 	//click_chatter("configure");
 
 
@@ -43,7 +43,7 @@ int SimplePushYanker::configure(Vector<String> &conf, ErrorHandler *errh) {
 
 
 
-void SimplePushYanker::push(int, Packet *p){
+void Buffer_Flusher::push(int, Packet *p){
 	int32_t frame_id_number = 0;
 	uint32_t offset = 0;
 	click_chatter(" ");
@@ -141,7 +141,7 @@ void SimplePushYanker::push(int, Packet *p){
 	//else output(0).push(p);
 }
 
-Packet * SimplePushYanker::pull(int){
+Packet * Buffer_Flusher::pull(int){
 	//click_chatter("pull");
 	if (queue.empty() == false){ //osea si la q no esta vacia
 		click_chatter("Package pulled!");
@@ -160,4 +160,4 @@ Packet * SimplePushYanker::pull(int){
 
 
 CLICK_ENDDECLS
-EXPORT_ELEMENT(SimplePushYanker)
+EXPORT_ELEMENT(Buffer_Flusher)
