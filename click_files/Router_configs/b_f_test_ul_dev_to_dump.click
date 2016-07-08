@@ -8,7 +8,7 @@ FromDevice(eth0)
 	
 	-> Buffer_Flusher_User
 
-	-> BandwidthShaper(500000)
+	-> BandwidthShaper(50000)
 	
 	-> ToDump(video_click/Traces/output_traces/dev_to_dump.dump)
 
