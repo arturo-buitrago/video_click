@@ -4,20 +4,18 @@
 
 import logging
 logging.getLogger("scapy").setLevel(1)
-
 import scapy.all
-
 import string
-
 import time
-
 import socket
+
 
 DROPPED_PKGS = 0
 GOOD_PKGS = 0
 LARGEST = 0
 FILTER = 1
 
+"""This ones here to ensure the right length for each package"""
 TAIL = bytearray(1472)
 
 IF_ONE_ENCODE_INFO = 1
@@ -32,6 +30,10 @@ socket = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 UDP_IP = '0.0.0.0'
 UDP_PORT = 54001
 
+
+"""This creates the package for the line read. It has 6 fields, which should be self explanatory.
+4 are signed ints, 2 are floats"""
+
 class VideoTrace(scapy.packet.Packet):
 	#6 fields
 	name = "VideoTrace Packet "
@@ -45,6 +47,7 @@ class VideoTrace(scapy.packet.Packet):
 def strip(string):
 	return string.split('\n')[0]
 
+'''Dummy video trace'''
 
 def make_videotrace(a=1,b=2,c=3,d=4,e=5,f=6):
 	return VideoTrace(Frame_Type = a, Frame_Identifier = b, Segment_Number = c, Frame_Size = d, Event_Ocurred = e, m2st = f)
@@ -54,56 +57,55 @@ def makea():
 	a.show()
 
 
+"""This reads the lines of the .txt file, calls the makepackages function after reading each line"""
 
 def readtrace():
-	#print('a')
 	trace = open(AVAILABLE_FILES[CHOSEN_FILE],'r')
-	#print(size(trace))
 	lines = trace.readlines()
 	NUMBER_OF_LINES = len(lines)
 	
 	for x in range(NUMBER_OF_LINES):
 		makepackages(lines,x)
-	#print("%i lines." % NUMBER_OF_LINES)
-	#print(lines)
-	#return (make_videotrace(1,2,3,4,5,6), make_videotrace(7,8,9,10,11,12))
+
 def makepackages(lines,index):
-	#for x in range(NUMBER_OF_LINES):
+
 	ok = 1
 	short = 0
 
 	lines = strip(lines[index])
 	linessplit = lines.split(',')
-	#print(linessplit)
+
 	a = make_videotrace(int(linessplit[0]),int(linessplit[1]),int(linessplit[2]),long(linessplit[3]),float(linessplit[4]),float(linessplit[5]))
+	
+	"""Filters out the strange -100 frames"""
 	if linessplit[0] == '-100' and FILTER:
-		print('weird -100 shit')
 		ok = 0
+
+	"""Filters out the start of frames, with the -1 identifier"""
 	elif linessplit[2] == '-1' and FILTER:
-		print("start of a frame")
 		ok = 0
 
 	if FILTER == 0:
-		print("RAW DOG")
+		print("RAW PKG")
 		wrap_and_send(str(a))
 
 
-
-	#print (b)
+	"""Tracks the larges package that is sent"""
 	if long(linessplit[3]) > LARGEST:
 		global LARGEST
 		LARGEST = long(linessplit[3])
 
+	"""Fixes the packages that are shorter (last pkg of a frame) with the correct size"""
 	if long(linessplit[3]) < 12304:
 		short = (long(linessplit[3])/8)-len(str(a))-42
-		print("shawty")
 
+	"""Sends packages that make the cut"""
 	if IF_ONE_ENCODE_INFO and ok and not short:
-		print("good")
+		#print("good")
 		wrap_and_send(str(a))
 		global GOOD_PKGS
 		GOOD_PKGS+=1
-		#print(len(str(a)))
+
 	elif short and ok and short>0:
 		correct_length(str(a),short)
 		global GOOD_PKGS
@@ -113,12 +115,6 @@ def makepackages(lines,index):
 		DROPPED_PKGS +=1
 		pass
 
-	#output = scapy.all.hexdump(a)
-	#text_file = open('output.txt', 'w')
-	#text_file.write(scapy.utils.linehexdump(a))
-	#text_file.close()
-	#scapy.all.hexdump(a)
-	#print (str(a))
 
 def correct_length(incoming, difference):
 	incoming = incoming + bytearray(difference)
@@ -133,23 +129,14 @@ def wrap_and_send(incoming):
 
 
 if __name__ == "__main__":
-	#scapy.all.interact(mydict = globals())
-	#print('here goes nothing')
-	#print("d4c3 b2a1 0200 0400 0000 0000 0000 0000 d007 0000 0c00 0000")
-	#print('well ok')
+
 	print("Will send %i. %s in 3 seconds." % (CHOSEN_FILE, AVAILABLE_FILES[CHOSEN_FILE]))
 	time.sleep(3)
 
-	print(len(TAIL))
+	#print(len(TAIL))
 	readtrace()
 	print("dropped %i" % DROPPED_PKGS)
 	print("Good ones %i" % GOOD_PKGS)
 	print("largest frame %i" % LARGEST)
 	
-	#makepackages()
-	#makea()
 
-
-
-
-	#SignedIntField
