@@ -9,6 +9,6 @@ FromDevice(eth0)
 
 	//-> BandwidthShaper(10000)
 	
-	-> ToDevice(eth0)
+	-> Discard
 
 

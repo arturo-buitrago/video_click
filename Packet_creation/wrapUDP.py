@@ -82,6 +82,7 @@ def makepackages(lines,index):
 		ok = 0
 
 	"""Filters out the start of frames, with the -1 identifier"""
+	
 	elif linessplit[2] == '-1' and FILTER:
 		ok = 0
 
