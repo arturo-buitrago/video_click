@@ -27,7 +27,7 @@ NUMBER_OF_LINES = 0
 
 socket = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 
-UDP_IP = '0.0.0.0'
+UDP_IP = '192.168.45.4'
 UDP_PORT = 54001
 
 
