@@ -46,8 +46,8 @@ int Buffer_Flusher::configure(Vector<String> &conf, ErrorHandler *errh) {
 void Buffer_Flusher::push(int, Packet *p){
 	int32_t frame_id_number = 0;
 	uint32_t offset = 0;
-	click_chatter(" ");
-	click_chatter("%i. pkg",pkg_num);
+	//click_chatter(" ");
+	//click_chatter("%i. pkg",pkg_num);
 	pkg_num++;
 
 
@@ -85,7 +85,7 @@ void Buffer_Flusher::push(int, Packet *p){
 
 	if (*start==1){
 	//SI ES UN KEYFRAME
-		click_chatter("keyframe");
+		//click_chatter("keyframe");
 		offset = num_non_keyframes_since_last_keyframe;
 		//click_chatter("%i %i",num_non_keyframes_since_last_keyframe,offset);
 		//num_non_keyframes_since_last_keyframe = 0;
@@ -99,28 +99,28 @@ void Buffer_Flusher::push(int, Packet *p){
 				//click_chatter("Buffer Flush!");
 
 				int queue_size = queue.size();
-				click_chatter("Queue length before flush : %i",queue.size());
+				//click_chatter("Queue length before flush : %i",queue.size());
 				//offset = 
 				//PRIMER CASO
 				if(offset<queue_size){
-					click_chatter("Buffer Flush! [case1]");
-					click_chatter("offset is %i",offset);
+					//click_chatter("Buffer Flush! [case1]");
+					//click_chatter("offset is %i",offset);
 					for(uint32_t z=0;z<offset;z++){
 						queue.pop_back();
-						click_chatter("pop");
+						//click_chatter("pop");
 					}
 				}
 
 				//SEGUNDO CASO
 				else if(offset>=queue_size){
-					click_chatter("Buffer Flush! [case2]");
+					//click_chatter("Buffer Flush! [case2]");
 
 					queue.clear();
 				}
 
 				//TERCER CASO
 				//else{no hago nada}
-				click_chatter("Queue length after flush : %i",queue.size());
+				//click_chatter("Queue length after flush : %i",queue.size());
 			}
 		}
 
@@ -128,9 +128,9 @@ void Buffer_Flusher::push(int, Packet *p){
 		num_non_keyframes_since_last_keyframe = 0;
 	} else {
 		//NOT A KEYFRAME
-		click_chatter("Not a keyframe");
+		//click_chatter("Not a keyframe");
 		num_non_keyframes_since_last_keyframe++;
-		click_chatter("Number of non-keyframes since last one %i",num_non_keyframes_since_last_keyframe);
+		//click_chatter("Number of non-keyframes since last one %i",num_non_keyframes_since_last_keyframe);
 		queue.push_back(p);
 	}
 	//*start = *(start);
@@ -144,11 +144,11 @@ void Buffer_Flusher::push(int, Packet *p){
 Packet * Buffer_Flusher::pull(int){
 	//click_chatter("pull");
 	if (queue.empty() == false){ //osea si la q no esta vacia
-		click_chatter("Package pulled!");
+		//click_chatter("Package pulled!");
 
 		Packet *pkg =  queue.front();
 		queue.pop_front();
-		click_chatter("Length of Queue after pull : %i",queue.size());
+		//click_chatter("Length of Queue after pull : %i",queue.size());
 		return pkg;
 	}else{
 		return 0;
