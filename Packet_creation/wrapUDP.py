@@ -20,8 +20,8 @@ TAIL = bytearray(1472)
 
 IF_ONE_ENCODE_INFO = 1
 
-AVAILABLE_FILES = ('trace.txt','dummytrace_6.txt')
-CHOSEN_FILE = 1
+AVAILABLE_FILES = ('trace.txt','dummytrace_6.txt','only1.txt')
+CHOSEN_FILE = 0
 
 NUMBER_OF_LINES = 0
 
@@ -130,8 +130,17 @@ def wrap_and_send(incoming):
 
 if __name__ == "__main__":
 
-	print("Will send %i. %s in 3 seconds." % (CHOSEN_FILE, AVAILABLE_FILES[CHOSEN_FILE]))
-	time.sleep(3)
+	print("Please choose a file to send:")
+	for x in range(0,3):	
+		print("%i. %s" % ( x, AVAILABLE_FILES[x] ) )
+
+	print("")
+	filenum = input("Enter a number: ")
+	global CHOSEN_FILE
+	CHOSEN_FILE = int(filenum)
+
+	print("Will send %i. %s." % (CHOSEN_FILE, AVAILABLE_FILES[CHOSEN_FILE]))
+	#time.sleep(3)
 
 	#print(len(TAIL))
 	readtrace()
