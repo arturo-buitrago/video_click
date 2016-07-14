@@ -29,3 +29,6 @@ add to gdb to fix bug about some library missing (its looking for gcc in the wro
 	also:
 	set args
 	PATH_TO_FILE/config.click
+
+	info threads
+
