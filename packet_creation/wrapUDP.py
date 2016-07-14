@@ -25,6 +25,8 @@ CHOSEN_FILE = 0
 
 NUMBER_OF_LINES = 0
 
+NUMBER_OF_ONES = 0
+
 socket = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 
 UDP_IP = '192.168.45.4'
@@ -85,19 +87,25 @@ def makepackages(lines,index):
 	elif linessplit[2] == '-1' and FILTER:
 		ok = 0
 
+
+
 	if FILTER == 0:
 		print("RAW PKG")
 		wrap_and_send(str(a))
 
 
 	"""Tracks the larges package that is sent"""
-	if long(linessplit[3]) > LARGEST:
+	if long(linessplit[3]) > LARGEST and ok:
 		global LARGEST
 		LARGEST = long(linessplit[3])
 
 	"""Fixes the packages that are shorter (last pkg of a frame) with the correct size"""
 	if long(linessplit[3]) < 12304:
 		short = (long(linessplit[3])/8)-len(str(a))-42
+
+	if linessplit[0] == '1' and ok:
+		global NUMBER_OF_ONES
+		NUMBER_OF_ONES += 1
 
 	"""Sends packages that make the cut"""
 	if IF_ONE_ENCODE_INFO and ok and not short:
@@ -144,8 +152,9 @@ if __name__ == "__main__":
 
 	#print(len(TAIL))
 	readtrace()
-	print("dropped %i" % DROPPED_PKGS)
-	print("Good ones %i" % GOOD_PKGS)
-	print("largest frame %i" % LARGEST)
+	print("Frames Discarded %i" % DROPPED_PKGS)
+	print("Frames Sent %i" % GOOD_PKGS)
+	print("Of which, there were %i Keyframes" % NUMBER_OF_ONES)
+	print("Largest Frame Sent %i" % LARGEST)
 	
 

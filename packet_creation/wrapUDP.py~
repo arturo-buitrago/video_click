@@ -25,6 +25,8 @@ CHOSEN_FILE = 0
 
 NUMBER_OF_LINES = 0
 
+NUMBER_OF_ONES = 0
+
 socket = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 
 UDP_IP = '192.168.45.4'
@@ -85,6 +87,9 @@ def makepackages(lines,index):
 	elif linessplit[2] == '-1' and FILTER:
 		ok = 0
 
+	if linessplit[0] == '1':
+		global NU
+
 	if FILTER == 0:
 		print("RAW PKG")
 		wrap_and_send(str(a))
@@ -131,11 +136,16 @@ def wrap_and_send(incoming):
 if __name__ == "__main__":
 
 	print("Please choose a file to send:")
-	for x in AVAILABLE_FILES:	
-		print("%i. %s" % (x, AVAILABLE_FILES(x))
+	for x in range(0,3):	
+		print("%i. %s" % ( x, AVAILABLE_FILES[x] ) )
 
-	print("Will send %i. %s in 3 seconds." % (CHOSEN_FILE, AVAILABLE_FILES[CHOSEN_FILE])
-	time.sleep(3)
+	print("")
+	filenum = input("Enter a number: ")
+	global CHOSEN_FILE
+	CHOSEN_FILE = int(filenum)
+
+	print("Will send %i. %s." % (CHOSEN_FILE, AVAILABLE_FILES[CHOSEN_FILE]))
+	#time.sleep(3)
 
 	#print(len(TAIL))
 	readtrace()
