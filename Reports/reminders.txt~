@@ -13,6 +13,8 @@ para installar
 	click-install x
 	click-uninstall x
 
+	userlevel/click video_click/click_files/Router_configs/b_f_test_ul.click
+
 	sudo click-install video_click/click_files/Router_configs/b_f_test_kernel.click
 
 
@@ -20,3 +22,6 @@ para installar
 
 para ver threads de kernel
 	ps -ef | grep "\[" 
+
+add to gdb to fix bug about some library missing (its looking for gcc in the wrong place)
+	python sys.path.append("/usr/share/gcc-4.8/python");

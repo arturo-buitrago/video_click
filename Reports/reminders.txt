@@ -22,3 +22,10 @@ para installar
 
 para ver threads de kernel
 	ps -ef | grep "\[" 
+
+add to gdb to fix bug about some library missing (its looking for gcc in the wrong place)
+	python sys.path.append("/usr/share/gcc-4.8/python");
+
+	also:
+	set args
+	PATH_TO_FILE/config.click
