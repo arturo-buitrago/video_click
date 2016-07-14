@@ -1,14 +1,12 @@
 
 FromDevice(eth0)
-	-> Queue(100000)
+//	-> Queue(100000)
 
-	-> BandwidthShaper(50000)
-	
-	-> DelayUnqueue(2)
-	
+//	->BandwidthShaper(700000)
+
+//	-> Unqueue
+
 	-> Buffer_Flusher_User
-
-	-> BandwidthShaper(50000)
 	
-	-> ToDevice(eth0)
+	-> Socket(UDP, 192.168.45.2, 54001)
 
