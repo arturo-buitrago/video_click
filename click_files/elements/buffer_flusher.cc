@@ -6,10 +6,11 @@
 #include "buffer_flusher.hh"
 
 int32_t last_keyframe_id = -1;
-//int nonkeyframenumber = 1;
 uint32_t pkg_num = 1;
 int num_non_keyframes_since_last_keyframe = 0;
 
+//This is the actual queue, we use a structure that is already defined by click.
+//Often (required for running at Kernel level)
 Deque<Packet *> queue;
 
 
@@ -22,133 +23,126 @@ Buffer_Flusher::~ Buffer_Flusher()
 
 int Buffer_Flusher::configure(Vector<String> &conf, ErrorHandler *errh) {
 	//click_chatter("configure");
-
-
-	//if (cp_va_kparse(conf, this, errh, "MAXPACKETSIZE", cpkM, cpInteger, &maxSize, cpEnd) < 0) return -1;
-	//if (maxSize <= 0) return errh->error("maxsize should be larger than 0");
-	//return 0;
-
-	//Element *e;
-
-    //if (Args(conf, this, errh).read_mp("QUEUE", e).complete() < 0)
-	//return -1;
-
-    //if (!(_q = static_cast<SimpleQueue *>(e->cast("SimpleQueue"))))
-	//return errh->error("QUEUE argument must be a Queue element");
-
     return 0;
 
 }
 
-
-
+/*------------------------------------------PUSH------------------------------------------------*/
+/*Most of the workload will fall on the push function below, because it's at the push moment that we 
+want our buffer flusher implemented. You could also conceivably move this functionality over
+to the pull function, but this seemed more natural                                              */
 
 void Buffer_Flusher::push(int, Packet *p){
 	int32_t frame_id_number = 0;
 	uint32_t offset = 0;
-	//click_chatter(" ");
-	//click_chatter("%i. pkg",pkg_num);
+
+	//keeps track of the packet number
 	pkg_num++;
 
+	/*                            POINTERS -> IDENTIFIERS                                      */
+	/* In this section we make sure that the pointers that we need do so in the right direction*/
+	/*                                                                                         */
 
-	//char var = "0";
-	//const char *var_pt = "1";
-	//click_chatter("Got a packet of size %d",p->length());
-	//click_chatter("GODDAMN");
-	//click_chatter("last keyframe id: %i",last_keyframe_id);
+	//Here we move a pointer to where the keyframe identifier should be
+	// 1 means keyframe, 0 means non-keyframe
 	const unsigned char *start = p->data();
-	//start+2;
+	
 	for (int i=0; i<45;i++){
 		*start++;
-		//click_chatter("%i -> %p",i,*start);	
 	}
-	//click_chatter("%p",*start);
-	//start ahora esta en el pointer de 1/0
+	//This loop looks kinda dumb, but just simply adding 45 doesn't work
 
+
+	//Here we determine the frame identifier, which is 2 bytes ahead of the keyframe identifier
 	const unsigned char *frame_id = start;
 	for (int i=0; i<3;i++){
 		*frame_id++;
 	} 
-	//esto por lo del int overflow
+	//To avoid int overflow, we calculate the first byte, then the second one and add them together
 	frame_id_number += (*frame_id)*(256);
 	*frame_id++;
 	frame_id_number += *frame_id;
-	//click_chatter("Frame id -> %p",*frame_id);	
 
-
+	//Here we continue with segment id
+	//This isn't strictly needed, but would come in handy if we wanted to ensure that
+	//the packages come at exactly the right order
 	const unsigned char *segment = frame_id;
 	for (int i=0; i<4;i++){
 		*segment++;
 	}
-	//click_chatter("Segment -> %p",*segment);	
+
+	/*                                     BUFFER FLUSHER                                      */
+	/* Here's where the proverbial flushing of buffers take place. Note that most of the       */
+	/* functions called are ones you already know. Deque is a double-ended queue! For more info*/
+	/* look for the doxygen documentation on deque or look at the deque.h file.                */
 
 
 	if (*start==1){
-	//SI ES UN KEYFRAME
-		//click_chatter("keyframe");
+	//If we have a keyframe
 		offset = num_non_keyframes_since_last_keyframe;
-		//click_chatter("%i %i",num_non_keyframes_since_last_keyframe,offset);
-		//num_non_keyframes_since_last_keyframe = 0;
+		//Hold the number of non keyframes since our last keyframe as the offset
 
 		if(*segment == 0){
-		//SI ES EL INICIO DE UN SEGMENTO
+		//If it is the start of a segment:
+		//This is very important, flushing at every keyframe would theoretically work but would
+		//be a waste of resources. Click eats enough CPU as it is.
+
 			if (frame_id_number > last_keyframe_id){
-				//SI EL KEYFRAME ID ES MAYOR AL ANTERIOR 
+				//Pretty much a failsafe, ensures that the order is correct
+				
 				last_keyframe_id = frame_id_number;
-
-				//click_chatter("Buffer Flush!");
-
+				//Resets last keyframe
+				
 				int queue_size = queue.size();
-				//click_chatter("Queue length before flush : %i",queue.size());
-				//offset = 
-				//PRIMER CASO
+
+
+				//FIRST FLUSH CASE
+				//The queue has a mix of both keyframes and non-keyframes
+				//This is the rarer of the two cases
 				if(offset<queue_size){
-					//click_chatter("Buffer Flush! [case1]");
-					//click_chatter("offset is %i",offset);
 					for(uint32_t z=0;z<offset;z++){
 						queue.pop_back();
-						//click_chatter("pop");
+						//Get rid of all non-keyframes that have been pushed so far up to the last keyframe pushed
 					}
 				}
 
-				//SEGUNDO CASO
+				//SECOND FLUSH CASE
+				//The queue is full of non-keyframes
+				//This is the more likely case, unless you have long queues or low bandwidth
 				else if(offset>=queue_size){
-					//click_chatter("Buffer Flush! [case2]");
-
 					queue.clear();
+					//Drops all packages in queue
 				}
 
-				//TERCER CASO
-				//else{no hago nada}
-				//click_chatter("Queue length after flush : %i",queue.size());
 			}
 		}
 
 		queue.push_back(p);
 		num_non_keyframes_since_last_keyframe = 0;
-	} else {
-		//NOT A KEYFRAME
-		//click_chatter("Not a keyframe");
-		num_non_keyframes_since_last_keyframe++;
-		//click_chatter("Number of non-keyframes since last one %i",num_non_keyframes_since_last_keyframe);
-		queue.push_back(p);
-	}
-	//*start = *(start);
+		//We push after all appropriate flushing has taken place
+		//And reset the number of non-keyframes since last keyframe
 
-	//click_chatter("len queue after push %i",queue.size());
-	//click_chatter("%p",*start);
-	//if (p->length() > maxSize)  p->kill();
-	//else output(0).push(p);
+	} else {
+		//If not a keyframe:
+
+		num_non_keyframes_since_last_keyframe++;
+		queue.push_back(p);
+		//Just add to queue normally
+	}
+
 }
 
-Packet * Buffer_Flusher::pull(int){
-	//click_chatter("pull");
-	if (queue.empty() == false){ //osea si la q no esta vacia
-		//click_chatter("Package pulled!");
 
+/*------------------------------------------PULL------------------------------------------------*/
+/*This function works as in a very normal queue. It was modeled after the SimpleQueue element, */
+/*if you want to borrow any other ideas. Never had had trouble with it                          */
+/*Pops if not empty.                                                                            */
+
+Packet * Buffer_Flusher::pull(int){
+
+	if (queue.empty() == false){
 		Packet *pkg =  queue.front();
 		queue.pop_front();
-		//click_chatter("Length of Queue after pull : %i",queue.size());
 		return pkg;
 	}else{
 		return 0;
