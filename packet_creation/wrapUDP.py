@@ -20,7 +20,7 @@ TAIL = bytearray(1472)
 
 IF_ONE_ENCODE_INFO = 1
 
-AVAILABLE_FILES = ('trace.txt','dummytrace_6.txt','only1.txt')
+AVAILABLE_FILES = ('trace.txt','dummytrace_6.txt','only1.txt',"../traces/video_traces_as_given/medium_channel.txt","../traces/video_traces_as_given/slow_channel.txt")
 CHOSEN_FILE = 0
 
 NUMBER_OF_LINES = 0
@@ -29,7 +29,7 @@ NUMBER_OF_ONES = 0
 
 socket = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 
-UDP_IP = '10.152.4.187'
+UDP_IP = '10.152.4.54'
 UDP_PORT = 54001
 
 
