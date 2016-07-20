@@ -1,7 +1,5 @@
 //Takes the medium channel benchmark and follows the delay betweeen packages
 //Sends it then to the Socket specified below
-//TIMING makes it follow the delay between packages specified in the input dump file
-//STOP makes the router configuration close after the whole file has been read
 
 define($FILE video_click/traces/clean_traces/benchmark_medium_channel.pcap)
 
