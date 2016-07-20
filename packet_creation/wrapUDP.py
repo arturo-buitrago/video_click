@@ -29,7 +29,7 @@ NUMBER_OF_ONES = 0
 
 socket = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 
-UDP_IP = '192.168.45.4'
+UDP_IP = '10.152.4.187'
 UDP_PORT = 54001
 
 
@@ -136,16 +136,30 @@ def wrap_and_send(incoming):
 
 
 
-if __name__ == "__main__":
+def main():
 
-	print("Please choose a file to send:")
-	for x in range(0,3):	
-		print("%i. %s" % ( x, AVAILABLE_FILES[x] ) )
+	print("Please choose a file to send to %s at port %s: " % (UDP_IP,UDP_PORT))
+	print("Enter \"0\" to choose a different IP address.")
+	for x in range(1,len(AVAILABLE_FILES)+1):	
+		print("%i. %s" % ( x, AVAILABLE_FILES[x-1] ) )
+
 
 	print("")
 	filenum = input("Enter a number: ")
-	global CHOSEN_FILE
-	CHOSEN_FILE = int(filenum)
+	print(filenum)
+
+	if filenum is not 0:
+		print("oh yeah")
+		global CHOSEN_FILE
+		CHOSEN_FILE = int(filenum - 1)
+	else:
+		global UDP_IP
+		UDP_IP = raw_input("Please enter the new address: ")
+		print("Restarting...")
+		main()
+		return
+
+
 
 	print("Will send %i. %s." % (CHOSEN_FILE, AVAILABLE_FILES[CHOSEN_FILE]))
 	#time.sleep(3)
@@ -156,5 +170,8 @@ if __name__ == "__main__":
 	print("Frames Sent %i" % GOOD_PKGS)
 	print("Of which, there were %i Keyframes" % NUMBER_OF_ONES)
 	print("Largest Frame Sent %i" % LARGEST)
+	return
 	
 
+if __name__ == "__main__":
+	main()
