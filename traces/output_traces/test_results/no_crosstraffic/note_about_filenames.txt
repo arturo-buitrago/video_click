@@ -1,7 +1,0 @@
-note_about_filenames.txt
-
-Medium channel or slow channel are the two original traces given to me at the onset of the project. They are located under video_click/traces/video_traces_as_given .
-
-The first number is the bandwidth of the connection between the two computers, under simulation.
-
-The second number is the virtual bandwidth that click pulls the buffer flusher with.
