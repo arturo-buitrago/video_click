@@ -1,0 +1,9 @@
+plottear los datos interesantes de los tests en matlab
+hacer tests con crosstraffic x
+limpiar folders
+y escribir todo practicamente
+	intro al proyecto
+	hacer una pequena intro a click
+	para cada ordner una lista de las varas que hay adentro y que hacen
+	
+	
