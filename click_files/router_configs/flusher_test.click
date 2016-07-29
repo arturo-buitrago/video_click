@@ -11,7 +11,7 @@ FromDevice(eth0)
 
 	-> Buffer_Flusher_User
 
-	-> BandwidthShaper(2048000)
+	-> BandwidthShaper(512000)
 
 	-> ToDump(video_click/traces/output_traces/RENAME_ME.dump)
 
