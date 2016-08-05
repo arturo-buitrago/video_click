@@ -104,7 +104,7 @@ Packet Creator \textcolor{cadmiumgreen}{$\rightarrow$} Buffer Flusher \textcolor
 
 The first path (\textcolor{cadmiumgreen}{green}) is a channel emulated with the \textit{Netropy Network Emulator} in the institute Robotics lab, under a series of bandwidths and loads. The second path (\textcolor{amaranth}{red}) is a virtual channel emulated with a certain bandwidth that is included in the router configuration file for Click. It routes the output packages of the buffer flusher into a packet capture software (e.g. \textit{Wireshark}) and stored as \textit{.pcap} dump file.
 
-The following bandwidths were investigated in all possible combinations for both paths:
+The following bandwidths were investigated in certain relevant combinations for both paths:
 
 \begin{itemize}
 \item{1 Mbps}
@@ -138,14 +138,14 @@ Two video traces were used and had the following properties:
 \setlength{\tabcolsep}{12pt}
 \renewcommand{\arraystretch}{1.5}
  {\rowcolors{3}{whitesmoke}{silver}
-\begin{tabular}{ |p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{4cm}|  }
+\begin{tabular}{ |p{3cm}|p{3cm}|p{3cm}|p{3cm}|  }
 \hline
-\multicolumn{5}{|c|}{Video traces} \\
+\multicolumn{4}{|c|}{Video traces} \\
 \hline
-Channel type & Total packages & \textit{Keyframe} packages & \textit{Keyframe} percentage & Length (seconds) \\
+Channel type & Total packages & \textit{Keyframe} packages & \textit{Keyframe} percentage\\
 \hline
-Slow Channel & 1465 & 687 & 46.9\% & ~ 10.4 seconds \\
-Medium Channel & 15677 & 632 & 4.0\% & ~ 10.4 seconds\\
+Slow Channel & 1465 & 687 & 46.9\%\\
+Medium Channel & 15677 & 632 & 4.0\%\\
 
 \hline
 \end{tabular}
@@ -157,4 +157,32 @@ Medium Channel & 15677 & 632 & 4.0\% & ~ 10.4 seconds\\
 
 \section{Test Results}
 
-\section{Discussion}
+\subsection{No cross-traffic}
+
+\begin{table}[htbp]
+\caption{No cross-traffic}
+\break
+\setlength{\arrayrulewidth}{1mm}
+\setlength{\tabcolsep}{12pt}
+\renewcommand{\arraystretch}{1.5}
+ {\rowcolors{3}{whitesmoke}{silver}
+\begin{tabular}{ |p{1.375cm}|p{1.375cm}|p{1.5cm}|p{1.5cm}|p{1cm}|p{1.75cm}|p{1.75cm}| }
+\hline
+BW A (Mbps)&BW B(Mbps)& Total packages & \textit{Keyframe} packages & \% & \textit{Non-Keyframe} Packages & Time elapsed (sec) \\
+\hline
+\multicolumn{7}{|c|}{Slow Channel} \\
+\hline
+1&4&1465&687&46.9\%&778&17.35\\
+16&1&697&687&98.6\%&10&1.08\\
+16&16&1465&687&46.9\%&778&1.08\\
+\hline
+\rowcolor{white}\multicolumn{7}{|c|}{Medium Channel} \\
+\hline
+1&4&15677&632&4.0\%&15045&186.26\\
+16&1&1163&632&54.3\%&531&11.57\\
+16&16&15677&633&4.0\%&15046&11.64\\
+\hline
+\end{tabular}
+}
+\end{table}
+
