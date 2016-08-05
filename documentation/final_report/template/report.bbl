@@ -1,0 +1,44 @@
+\begin{thebibliography}{1}
+
+\bibitem{Bachhuber}
+Christoph Bachhuber, Eckehard Steinbach, Technische Universit, and Martin
+  Reisslein.
+\newblock {Low Delay Video Transmission Strategies Chair for Media Technology}.
+
+\bibitem{Kohler2000}
+Eddie Kohler, Robert Morris, Benjie Chen, John Jannotti, and M.~Frans Kaashoek.
+\newblock {The click modular router}.
+\newblock {\em ACM Transactions on Computer Systems}, 18(212):263--297, 2000.
+
+\bibitem{DoriguzziCorin2011}
+Roberto {Doriguzzi Corin}, Roberto Riggio, Daniele Miorandi, and Elio
+  Salvadori.
+\newblock {AiroLAB: Leveraging on virtualization to introduce controlled
+  experimentation in operational multi-hop wireless networks}.
+\newblock {\em Lecture Notes of the Institute for Computer Sciences,
+  Social-Informatics and Telecommunications Engineering, LNICST}, 46:331--344,
+  2011.
+
+\bibitem{Bianco2005}
+A.~Bianco, R.~Birke, D.~Bolognesi, J.M. Finochietto, G.~Galante, M.~Mellia,
+  M.L.N.P.P. Prashant, and F.~Neri.
+\newblock {Click vs. Linux: two efficient open-source IP network stacks for
+  software routers}.
+\newblock {\em HPSR. 2005 Workshop on High Performance Switching and Routing,
+  2005.}, pages 18--23, 2005.
+
+\bibitem{Liu2004}
+Tiecheng Liu and Chekuri Choudary.
+\newblock {Real-time content analysis and adaptive transmission of lecture
+  videos for mobile applications}.
+\newblock {\em ACM Multimedia 2004 - proceedings of the 12th ACM International
+  Conference on Multimedia}, pages 400--403, 2004.
+
+\bibitem{Zhang1999}
+Zhi-Li Zhang, Srihari Nelakuditi, Rahul Aggarwal, and Rose~P Tsang.
+\newblock {Efficient Selective Frame Discard Algorithms For Stored Video
+  Delivery Across Resource Constrained Networks}.
+\newblock {\em Proceedings of the IEEE International Conference on Computer
+  Communications (INFOCOM)}, pages 472--479, 1999.
+
+\end{thebibliography}

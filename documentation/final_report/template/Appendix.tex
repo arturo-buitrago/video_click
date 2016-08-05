@@ -1,0 +1,29 @@
+\chapter{Packet structure}
+\thispagestyle{empty}% no page number in chapter title page
+\begin{table}[htbp]
+\caption{Breakdown of packet structure by byte}
+\break
+\setlength{\arrayrulewidth}{1mm}
+\setlength{\tabcolsep}{12pt}
+\renewcommand{\arraystretch}{1.5}
+ {\rowcolors{3}{whitesmoke}{silver}
+\begin{tabular}{ |p{3cm}|p{1.5cm}|p{7cm}|  }
+\hline
+\multicolumn{3}{|c|}{Packet Structure} \\
+\hline
+Content & Bytes & Description \\
+\hline
+Ethernet Header & 0 - 13 & Header due to packaging. \\
+IPv4 Header & 14 - 33 & Header due to packaging. \\
+UDP Header & 34 - 41 & Header due to packaging. \\
+Frame Identifier & 42 - 45 & Binary variable coded as integer, either \textit{keyframe} or not. \\
+Frame Number & 46 - 49 & Used to monitor that order of packages is not scrambled. Coded as integer. \\
+Segment Number & 50 - 53 & Can be kept track of to detect any drops, coded as an integer. \\
+Packet Size & 54 - 57 & For most packets it equals 1538 bites. Coded as long. \\
+Event Occurred & 58 - 61 & Uninteresting for our purposes. Coded as float. \\
+Sampling time & 62 - 65 & Same as above. Coded as a float. \\
+Dummy Data & 66 onward & Necessary filler to achieve specified length. Filled with zeroes. \\
+\hline
+\end{tabular}
+}
+\end{table}

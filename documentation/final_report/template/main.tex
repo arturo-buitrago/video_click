@@ -1,0 +1,160 @@
+\chapter{Click Modular Router}
+\thispagestyle{empty}
+
+The \textbf{Click Modular Router} is a project that was born out of a paper by Eddie Kohler and other collaborators in 2000 \cite{Kohler2000}. It is still being given very sporadic, but important, updates by Kohler himself \href{https://github.com/kohler/click}{in his personal github repository}. It is designed to be a software architecture for building configurable routers. These routers are composed of simple packet routing modules, called \textit{elements}, that perform relatively straightforward functions. Click works by concatenating these elements (with possibly multiple inputs and outputs), in a meaningful way. This property makes it particularly easy to expand the software with user-defined elements, which was the case in this project.
+
+Click configuration files, which specify the flow of packets by listing the elements and their respective connections, are written in their own, simple syntax. Element files in themselves use C++, with its own implementation of the C++ Standard Library, which contains equivalents to most of the STL data structures. 
+
+The software is capable of running the router either at the user level or as a Linux kernel thread. Be advised that not all elements included in the software distribution can be executed at a kernel level. One of the original goals of this project was kernel integration of the resulting application, but unforeseen errors lead to debugging at a kernel level being out of the time scope devised for it. For further details, please read the appropriate chapter
+
+Click has a significant learning curve, especially due to lack of documentation and online resources, so perseverance is advised.
+
+\section{Why Click?}
+
+The Click Modular Router software had already been identified as the option with most potential from before the start of the practice in itself by my supervisor, Mr. Bachhuber. However, part of the literature research needed included evaluating other options for the implementation of the application.
+
+Alternatives seemed to be relatively scarce and deplorably out of date. The main ones identified were:
+\begin{itemize}
+\item X-kernel
+\item Scout
+\item OpenVZ
+\end{itemize}
+
+\href{http://www.cs.arizona.edu/projects/xkernel/}{\textit{X-kernel}} is a project that was mostly maintained by researchers from the University of Arizona. Its aim is to be an \"Object-based framework for implementing network protocols\". Most of its functionality was aimed at the TCP/IP protocol, and was deemed to lack the flexibility needed in order to process packets that did not expressly follow the protocol. I was also unable to find a reference or paper from this millennium, which further made it seem nonviable for the realization of the flusher.
+
+\href{http://www.cs.arizona.edu/projects/scout/}{\textit{Scout}} was devised as a spin-off of X-kernel, also with support from University of Arizona personnel. It was described as being  a \"communication-oriented operating system targeted at network appliances\". Despite being operating system, which would probably grant some greater measure of speed or expediency, it was also seen as not fitting the specifications. This was in no small part due to the woeful lack of updates and the sorry state of its host website and documentation.
+
+\href{https://openvz.org/}{\textit{OpenVZ}}, as discussed more thoroughly in a research paper by Doriguzzi et al \cite{DoriguzziCorin2011}, is a \"modified Linux kernel tree supporting virtualization, isolation and resource management\", and it is mostly used for virtualization of Linux containers. It was found by the authors to be too limiting compared to Click in different aspects for their simulation work on multi-hop wireless networks.
+
+Adding to these considerations, the paper published by Bianco et al \cite{Bianco2005}, which aims to prove the feasibility of a high performance IP router, which was more in line with our expectations of the software. It compared Click favorably in terms of reception and transmission (bit and packet) rate, among other measures, in a series of evaluations against the standard Linux network stack implementation. It especially attributes the differences to elements such as better buffer management in Click.
+
+Regarding buffer flushing or other forms of frame dropping in general, despite being a relatively common occurrence in video delivery for bandwidth-constrained applications, as in \cite{Liu2004} and \cite{Zhang1999}, the actual action is glossed over quickly and given little attention in the available literature.
+
+\chapter{Buffer Flusher}
+\section{Click Element}
+
+The buffer flusher was ultimately implemented as a single element in the Click software. Like all Click elements, it consists of a header file, in which the overall specifications of the element are given, and an element file, which contains the actual code. The header file contains the information that Click needs in order for it to know in what contexts the element makes sense, how many ports it has, how it reacts to packets being pulled or pushed, etc. In this file, the flusher has a very similar profile to that of a queue, with one input and one output port, that can handle any number of pushed packets and returns the appropriate packet when pulled, if there are any present. 
+
+The element file contains the actual implementation of the buffer flusher. It was modeled from the file that belonged to the default QuickQueue implementation. The definition for the pull function is left unchanged, with the element returning the first packet in the queue when any are present and returning a Null pointer when empty. Buffer flushes can only occur when a new packet is pushed into the queue.
+
+The push function starts by setting a pointer to the byte in the packet header which indicates whether the packet in question belongs to a \textit{keyframe}, a video frame which was deemed to be of higher relevance and thus marked for faster forwarding. Note that the buffer flusher has no functionality to actually tell whether a frame is a \textit{keyframe} or not, that distinction should be made by a different algorithm in another part of the process altogether, before splitting the frame itself into packets. The position of the \textit{keyframe} identifier was set beforehand (see the section dealing with packet creation), but the position of the pointer can be easily changed in the element file code. 
+
+If the frame is not a \textit{keyframe}, the frame gets pushed into the awaiting queue and the number of \textit{non-keyframes} since a flush is incremented by one. If, on the contrary, the packet does identify itself as having high transmit priority, another pointer into the packet checks whether the packet is the start of a frame or not. This makes the flushing function happen only for the start of frames, assuming of course that the whole frame has the same priority, saving some CPU power. Should that not be an issue, then the second pointer can be altogether ignored. 
+
+At this point, a flush of the buffer is called. This leads to two possible cases for flushing:
+\begin{enumerate}
+\item{Queue is full of \textit{non-keyframes}}
+\item{Queue has a mixture of \textit{keyframes} and \textit{non-keyframes}}
+\end{enumerate}
+
+In the first instance, the whole queue is simply purged. All incoming \textit{keyframes} are pushed to the start of the queue and can be pulled immediately. In the second case, the algorithm drops a number of packets at the back of the queue equal to the number of \textit{non-keyframe} packets since the last flush. Since all \textit{keyframes} cause a buffer flush unless the queue is empty, this should lead the prioritized packets to be pushed to the first slot not occupied by the same kind of parcels. Thus we have an element that implements the buffer flushing according to specifications.
+
+\subsection{Example}
+
+Given the following packet flow, with 0 denoting a \textit{non-keyframe} and 1 a \textit{keyframe}, with the first packet pushed beginning on the left:
+
+
+\begin{center}
+0 $\leftarrow$ 0 $\leftarrow$ 1 $\leftarrow$ 0 $\leftarrow$ 1 $\leftarrow$ 0 $\leftarrow$ 0 $\leftarrow$ 0
+\end{center}
+
+The buffer flusher would execute the following with each packet, assuming no pull requests reach the buffer flusher:
+
+\begin{enumerate}
+\item{Push \textit{non-keyframe} packet, 1 packet since last flush.}
+\item{Push \textit{non-keyframe} packet, 2 packets since last flush.}
+\item{Buffer flush (Case 1, whole queue discarded), push \textit{keyframe} packet. No packets since last flush.}
+\item{Push \textit{non-keyframe} packet, 1 packet since last flush.}
+\item{Buffer flush (Case 2, 1 packet flushed), push \textit{keyframe} packet. No packets since last flush.}
+\item{Push \textit{non-keyframe} packet, 1 packet since last flush.}
+\item{Push \textit{non-keyframe} packet, 2 packets since last flush.}
+\item{Push \textit{non-keyframe} packet, 3 packets since last flush.}
+\end{enumerate}
+
+This leaves the queue in the following order, with queue front at the right:
+
+\begin{center}
+0 $\rightarrow$ 0 $\rightarrow$ 0 $\rightarrow$ 1 $\rightarrow$ 1
+\end{center}
+
+\subsection{Kernel integration}
+
+As previously mentioned, one of the goals of the project was the integration of the application into the Linux kernel. The relative ease with which Click allows this was also one of the reasons why it was chosen as an appropriate software. The development and early testing of the buffer flusher occurred at the user level. After the correct functionality of the application was tested at this level, I tried to run it as a kernel thread, but ran into all sorts of trouble.
+
+Running the router configuration in the kernel  level causes Linux to intercept the thread and lock the CPU in which it is running for a certain amount of time. This loops after the timeout expires. I managed to isolate the problem to the buffer flusher element in itself, but could get no further without a deep understanding of the kernel and how it works with Click.
+
+The painstaking process of kernel thread debugging was deemed too laborious for the scope of this engineer's practice, as well as too complex for my current skill set. My supervisor and I decided jointly to run the tests at the user level and leave any kernel integration for possible future projects.
+
+\section{Packet creation}
+
+Part of the scope of the project included the creation of the packets from the original trace files provided by my supervisor. To preserve the integrity of test results and the functionality of the application, I sought to build the packages in a way that was unobtrusive and maintained both the size specified in the trace and all the information indicated in the files. 
+
+I decided on building the packets with a simple script with the help of \href{http://www.secdev.org/projects/scapy/}{\textit{"Scapy"}}, a Python-based packet manipulation program and corresponding module with especially accessible forging of parcels. The information was codified in simple fields of four Bytes and then filled with dummy data to achieve the correct size. These would then be sent from one machine to another through a UDP socket in order to crudely simulate the traffic coming in from the camera. This also significantly facilitates the packet capture by Click itself. The machine receiving the packages would then run the flushable buffer with the incoming information. For more details on packet structure, please see Appendix A.
+
+Despite the fact that UDP does not represent a realistic implementation of the video file transfer, seeing as the files being worked on are filled with dummy data, the relative convenience overruled any other minor concerns. 
+
+\chapter{Testing}
+
+The testing was centered around evaluating the way the buffer flusher deals with different volumes and patterns of incoming packet traffic. This meant simulating different situations of channel saturation for the path between the creation of the packages and the buffer flusher. Evaluation of the forwarding of the packages at the output of the buffer flusher was deemed unimportant and as such was not as thoroughly investigated. The test environment was as follows:
+\vspace{3mm}
+\begin{center}
+Packet Creator \textcolor{cadmiumgreen}{$\rightarrow$} Buffer Flusher \textcolor{amaranth}{$\rightarrow$} Packet Capture
+\end{center}
+\vspace{3mm}
+
+The first path (\textcolor{cadmiumgreen}{green}) is a channel emulated with the \textit{Netropy Network Emulator} in the institute Robotics lab, under a series of bandwidths and loads. The second path (\textcolor{amaranth}{red}) is a virtual channel emulated with a certain bandwidth that is included in the router configuration file for Click. It routes the output packages of the buffer flusher into a packet capture software (e.g. \textit{Wireshark}) and stored as \textit{.pcap} dump file.
+
+The following bandwidths were investigated in all possible combinations for both paths:
+
+\begin{itemize}
+\item{1 Mbps}
+\item{4 Mbps}
+\item{16 Mbps}
+\end{itemize}
+
+Additionally, the following channel loads or cross-traffic patterns were investigated.
+
+\begin{itemize}
+	\item{No channel load}
+	\item{Random cross-traffic}
+		\begin{itemize}
+			\item{25\% channel load}
+			\item{50\% channel load}
+			\item{75\% channel load}
+		\end{itemize}
+	\item{Sample pattern of cross-traffic}
+\end{itemize}
+
+The random cross-traffic patterns produce Poisson-distributed bursts of packets of 1500 Bytes of length, around the size of the average packet length. 
+
+The sample pattern of cross-traffic was a 
+
+Two video traces were used and had the following properties:
+
+\begin{table}[htbp]
+\caption{Video traces used for testing}
+\break
+\setlength{\arrayrulewidth}{1mm}
+\setlength{\tabcolsep}{12pt}
+\renewcommand{\arraystretch}{1.5}
+ {\rowcolors{3}{whitesmoke}{silver}
+\begin{tabular}{ |p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{4cm}|  }
+\hline
+\multicolumn{5}{|c|}{Video traces} \\
+\hline
+Channel type & Total packages & \textit{Keyframe} packages & \textit{Keyframe} percentage & Length (seconds) \\
+\hline
+Slow Channel & 1465 & 687 & 46.9\% & ~ 10.4 seconds \\
+Medium Channel & 15677 & 632 & 4.0\% & ~ 10.4 seconds\\
+
+\hline
+\end{tabular}
+}
+\end{table}
+
+
+
+
+\section{Test Results}
+
+\section{Discussion}

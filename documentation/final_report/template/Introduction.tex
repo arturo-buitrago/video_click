@@ -1,0 +1,11 @@
+\chapter{Introduction}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\thispagestyle{empty}
+
+The aim of this Engineer Practice is the implementation of a buffer flusher mechanism that works as described in the paper "Low Delay Video Transmission Strategies" \cite{Bachhuber}. Its main goal is to give certain video frames, called \textit{"keyframes"}, a higher transmission priority, by \textit{"flushing"} the buffer containing the outgoing packets of any belonging to non-keyframes, thus allowing the more important packets to be transmitted immediately. This would ideally result in a lower end-to-end transmission time in real systems. The router devised worked as intended at the user level but kernel integration proved to be too laborious for the scope of this work.
+
+The buffer flusher itself was implemented through the Click Modular Router, a virtual router creation software with Linux kernel integration. The corresponding Click Element files are included in the repository of the project, as well as the scripts used to create and send the packages. Tests were then run in a variety of different transmission conditions in order to gauge the effectiveness of the application.
+
+The rest of this report includes a comment on why Click was chosen and a more in-depth explanation of the software and the buffer flusher specifically. It is then followed by a discussion of the prospect of kernel integration. The testing environment is introduced and the test results are presented and discussed.
+
