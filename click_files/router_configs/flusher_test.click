@@ -11,8 +11,8 @@ FromDevice(eth0)
 
 	-> Buffer_Flusher_User
 
-	-> BandwidthShaper(512000)
+	-> BandwidthShaper(2048000)
 
-	-> ToDump(video_click/traces/output_traces/RENAME_ME.dump)
+	-> ToDump(video_click/traces/output_traces/test_results/sample_crosstraffic/RENAME_ME.dump)
 
 	-> Socket (UDP, 0.0.0.0, 54002)
