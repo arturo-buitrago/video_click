@@ -10,7 +10,7 @@ co = get(gca,'ColorOrder')
 figure
 subplot(2,1,1)
 
-scatter(time_non,no_non,5,niceblue); hold on; scatter(time_key,no_key,5,nicered)
+scatter(time_non,no_non,0.3,niceblue); hold on; scatter(time_key,no_key,20,nicered)
 
 set(gca,'FontSize',16)
 
