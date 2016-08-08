@@ -1,0 +1,31 @@
+
+niceblue = [20 121 202] ./ 255;
+nicered = [206 38 17] ./ 255;
+
+co = get(gca,'ColorOrder')
+set(gca, 'ColorOrder', [niceblue; nicered], 'NextPlot', 'replacechildren');
+co = get(gca,'ColorOrder')
+
+
+figure
+subplot(2,1,1)
+
+scatter(time_non,no_non,0.3,niceblue); hold on; scatter(time_key,no_key,10,nicered)
+
+set(gca,'FontSize',16)
+
+xlabel('Time (s)', 'fontsize',25)
+ylabel('Packet Number', 'fontsize',25)
+
+legend('Non-Keyframes','Keyframes','Location','northoutside')
+
+subplot(2,1,2)
+
+plot(Intervalstart,NonKeyframes); hold on; plot(Intervalstart,Keyframes)
+
+set(gca,'FontSize',16)
+
+xlabel('Time (s)', 'fontsize',25)
+ylabel('Packets/s', 'fontsize',25)
+
+
