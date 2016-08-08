@@ -98,18 +98,42 @@ Despite the fact that UDP does not represent a realistic implementation of the v
 The testing was centered around evaluating the way the buffer flusher deals with different volumes and patterns of incoming packet traffic. This meant simulating different situations of channel saturation for the path between the creation of the packages and the buffer flusher. Evaluation of the forwarding of the packages at the output of the buffer flusher was deemed unimportant and as such was not as thoroughly investigated. The test environment was as follows:
 \vspace{3mm}
 \begin{center}
-Packet Creator \textcolor{cadmiumgreen}{$\rightarrow$} Buffer Flusher \textcolor{amaranth}{$\rightarrow$} Packet Capture
+Packet Creator \textcolor{orange}{$\rightarrow$} Buffer Flusher \textcolor{violet}{$\rightarrow$} Packet Capture
 \end{center}
 \vspace{3mm}
 
-The first path (\textcolor{cadmiumgreen}{green}) is a channel emulated with the \textit{Netropy Network Emulator} in the institute Robotics lab, under a series of bandwidths and loads. The second path (\textcolor{amaranth}{red}) is a virtual channel emulated with a certain bandwidth that is included in the router configuration file for Click. It routes the output packages of the buffer flusher into a packet capture software (e.g. \textit{Wireshark}) and stored as \textit{.pcap} dump file.
+\textcolor{orange}{Path A} is a channel emulated with the \textit{Netropy Network Emulator} in the institute Robotics lab, under a series of bandwidths and loads. \textcolor{violet}{Path B} is a virtual channel emulated with a certain bandwidth that is included in the router configuration file for Click. It routes the output packages of the buffer flusher into a packet capture software (e.g. \textit{Wireshark}) and stores them as a \textit{.pcap} dump file.
 
-The following bandwidths were investigated in certain relevant combinations for both paths:
+The following bandwidths (among others) were investigated in certain relevant combinations for both paths:
 
 \begin{itemize}
 \item{1 Mbps}
 \item{4 Mbps}
 \item{16 Mbps}
+\end{itemize}
+
+
+For readability and legibility, only certain combinations are presented and analyzed in this report. The rest of the data is contained in the \textit{test\_results} repository.
+
+These bandwidth combinations were chosen for illustrative purposes and do not necessarily represent maximum or minimum values for correct function of the buffer flusher. 
+
+\begin{itemize}
+\item{\textcolor{orange}{Path A} : 1 Mbps, \textcolor{violet}{Path B} : 4 Mbps
+
+This configuration is meant to test the case in which the outgoing packet rate to the flusher exceeds the income rate, which should not be the norm for most. There should be little need for flushing due to very short queues in the flusher itself.}
+
+\item{
+\textcolor{orange}{Path A} : 16 Mbps, \textcolor{violet}{Path B} : 1 Mbps
+
+This configuration tests a high incoming packet rate with a low outgoing rate, a more realistic example. This environment should trigger the flushing mechanism at fairly regular intervals and evidence a much higher percentage of \textit{keyframe} packages after the flusher.
+}
+
+\item{
+\textcolor{orange}{Path A} : 16 Mbps, \textcolor{violet}{Path B} : 16 Mbps
+
+Lastly, both income and outcome rate are roughly equal. A similar result to the first configuration should be observed in terms of package count, but with much higher expediency.s
+}
+
 \end{itemize}
 
 Additionally, the following channel loads or cross-traffic patterns were investigated.
@@ -159,6 +183,8 @@ Medium Channel & 15677 & 632 & 4.0\%\\
 
 \subsection{No cross-traffic}
 
+The tests run with no cross-traffic serve primarily to set a benchmark to compare other testing conditions with, as well as corroborate the function of the application. 
+
 \begin{table}[htbp]
 \caption{No cross-traffic}
 \break
@@ -168,7 +194,7 @@ Medium Channel & 15677 & 632 & 4.0\%\\
  {\rowcolors{3}{whitesmoke}{silver}
 \begin{tabular}{ |p{1.375cm}|p{1.375cm}|p{1.5cm}|p{1.5cm}|p{1cm}|p{1.75cm}|p{1.75cm}| }
 \hline
-BW A (Mbps)&BW B(Mbps)& Total packages & \textit{Keyframe} packages & \% & \textit{Non-Keyframe} Packages & Time elapsed (sec) \\
+\textcolor{orange}{BW A} (Mbps)&\textcolor{violet}{BW B} (Mbps)& Total packages & \textit{Keyframe} packages & \% & \textit{Non-Keyframe} Packages & Time elapsed (sec) \\
 \hline
 \multicolumn{7}{|c|}{Slow Channel} \\
 \hline
@@ -186,3 +212,36 @@ BW A (Mbps)&BW B(Mbps)& Total packages & \textit{Keyframe} packages & \% & \text
 }
 \end{table}
 
+
+\subsection{Random cross-traffic}
+
+\begin{table}[htbp]
+\caption{Random cross-traffic, 50\% channel occupation}
+\break
+\setlength{\arrayrulewidth}{1mm}
+\setlength{\tabcolsep}{12pt}
+\renewcommand{\arraystretch}{1.5}
+ {\rowcolors{3}{whitesmoke}{silver}
+\begin{tabular}{ |p{1.375cm}|p{1.375cm}|p{1.5cm}|p{1.5cm}|p{1cm}|p{1.75cm}|p{1.75cm}| }
+\hline
+\textcolor{orange}{BW A} (Mbps)&\textcolor{violet}{BW B} (Mbps)& Total packages & \textit{Keyframe} packages & \% & \textit{Non-Keyframe} Packages & Time elapsed (sec) \\
+\hline
+\multicolumn{7}{|c|}{Slow Channel} \\
+\hline
+1&4&1465&687&46.9\%&778&35.6\\
+16&1&710&687&96.8\%&23&2.3\\
+16&16&1465&687&46.9\%&778&2.2\\
+\hline
+\rowcolor{white}\multicolumn{7}{|c|}{Medium Channel} \\
+\hline
+1&4&15677&632&4.0\%&15045&371.8\\
+16&1&2195&632&28.8\%&1563&23.8\\
+16&16&15677&633&4.0\%&15046&23.7\\
+\hline
+\end{tabular}
+}
+\end{table}
+
+\subsection{Sample pattern of cross-traffic}
+
+Lorem Ipsum
