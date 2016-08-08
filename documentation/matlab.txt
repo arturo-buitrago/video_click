@@ -10,7 +10,7 @@ co = get(gca,'ColorOrder')
 figure
 subplot(2,1,1)
 
-scatter(time_non,no_non,0.3,niceblue); hold on; scatter(time_key,no_key,10,nicered)
+scatter(time_non,no_non,5,niceblue); hold on; scatter(time_key,no_key,5,nicered)
 
 set(gca,'FontSize',16)
 
@@ -20,6 +20,8 @@ ylabel('Packet Number', 'fontsize',25)
 legend('Non-Keyframes','Keyframes','Location','northoutside')
 
 subplot(2,1,2)
+
+set(gca, 'ColorOrder', [niceblue; nicered], 'NextPlot', 'replacechildren');
 
 plot(Intervalstart,NonKeyframes); hold on; plot(Intervalstart,Keyframes)
 
