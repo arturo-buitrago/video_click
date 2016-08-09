@@ -244,10 +244,35 @@ The tests run with no cross-traffic serve primarily to set a benchmark to compar
 
 \subsection{Sample pattern of cross-traffic}
 
-Lorem Ipsum
-
-\begin{figure}[h]
-\caption{Hello hello}
+\begin{figure}[!ht]
+\caption{Sample cross-traffic}
 \centering
-\includegraphics[width=\textwidth]{nocross_1_4}
+\includegraphics[width = \textwidth]{crosstraffic}
 \end{figure}
+
+\begin{table}[htbp]
+\caption{Sample cross-traffic}
+\break
+\setlength{\arrayrulewidth}{1mm}
+\setlength{\tabcolsep}{12pt}
+\renewcommand{\arraystretch}{1.5}
+ {\rowcolors{3}{whitesmoke}{silver}
+\begin{tabular}{ |p{1.375cm}|p{1.375cm}|p{1.5cm}|p{1.5cm}|p{1cm}|p{1.75cm}|p{1.75cm}| }
+\hline
+\textcolor{orange}{BW A} (Mbps)&\textcolor{violet}{BW B} (Mbps)& Total packages & \textit{Keyframe} packages & \% & \textit{Non-Keyframe} Packages & Time elapsed (sec) \\
+\hline
+\multicolumn{7}{|c|}{Slow Channel} \\
+\hline
+1&4&1465&687&46.9\%&778&17.5\\
+16&1&710&687&96.8\%&23&1.2\\
+16&16&1465&687&46.9\%&778&1.2\\
+\hline
+\rowcolor{white}\multicolumn{7}{|c|}{Medium Channel} \\
+\hline
+1&4&15677&632&4.0\%&15045&191.5\\
+16&1&1234&632&51.2\%&602&12.4\\
+16&16&15677&632&4.0\%&15046&12.5\\
+\hline
+\end{tabular}
+}
+\end{table}
