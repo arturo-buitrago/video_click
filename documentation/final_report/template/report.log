@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.7.7)  9 AUG 2016 02:06
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.7.7)  9 AUG 2016 07:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -375,8 +375,7 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 (/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
 ) (./report.aux
-(./StatementsEN.aux) (./Introduction.aux) (./main.aux) (./Conclusions.aux)
-(./Appendix.aux))
+(./StatementsEN.aux) (./Introduction.aux) (./main.aux) (./Appendix.aux))
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 72.
@@ -393,7 +392,8 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 72.
 LaTeX Font Info:    ... okay on input line 72.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 72.
 LaTeX Font Info:    ... okay on input line 72.
- (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count119
 \scratchdimen=\dimen123
@@ -621,201 +621,333 @@ Underfull \hbox (badness 10000) in paragraph at lines 195--213
  []
 
 [8]
-Underfull \hbox (badness 2884) in paragraph at lines 227--227
+Package epstopdf Info: Source file: <figures/nocross_slow_16_1.eps>
+(epstopdf)                    date: 2016-08-08 20:44:13
+(epstopdf)                    size: 158577 bytes
+(epstopdf)             Output file: <figures/nocross_slow_16_1-eps-converted-to
+.pdf>
+(epstopdf)                    date: 2016-08-09 05:08:34
+(epstopdf)                    size: 22993 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/nocross_slow_16_1-
+eps-converted-to.pdf figures/nocross_slow_16_1.eps>
+(epstopdf)             \includegraphics on input line 222.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/nocross_slow_16_1-eps-converted-to.pdf, id=204, 718.685pt x 817.0525pt
+>
+File: figures/nocross_slow_16_1-eps-converted-to.pdf Graphic file (type pdf)
+ <use figures/nocross_slow_16_1-eps-converted-to.pdf>
+Package pdftex.def Info: figures/nocross_slow_16_1-eps-converted-to.pdf used on
+ input line 222.
+(pdftex.def)             Requested size: 395.27797pt x 449.38028pt.
+Package epstopdf Info: Source file: <figures/nocross_med_16_1.eps>
+(epstopdf)                    date: 2016-08-08 20:44:13
+(epstopdf)                    size: 255404 bytes
+(epstopdf)             Output file: <figures/nocross_med_16_1-eps-converted-to.
+pdf>
+(epstopdf)                    date: 2016-08-09 05:08:35
+(epstopdf)                    size: 21235 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/nocross_med_16_1-e
+ps-converted-to.pdf figures/nocross_med_16_1.eps>
+(epstopdf)             \includegraphics on input line 228.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/nocross_med_16_1-eps-converted-to.pdf, id=205, 715.67375pt x 817.0525p
+t>
+File: figures/nocross_med_16_1-eps-converted-to.pdf Graphic file (type pdf)
+ <use figures/nocross_med_16_1-eps-converted-to.pdf>
+Package pdftex.def Info: figures/nocross_med_16_1-eps-converted-to.pdf used on 
+input line 228.
+(pdftex.def)             Requested size: 393.62178pt x 449.38028pt.
+ [9] [10 <./figures/nocross_slow_16_1-eps-converted-to.pdf>] [11 <./figures/noc
+ross_med_16_1-eps-converted-to.pdf>]
+Underfull \hbox (badness 2884) in paragraph at lines 252--252
 []|[]\OT1/cmr/m/n/12 BW A[]
  []
 
 
-Underfull \hbox (badness 3646) in paragraph at lines 227--227
+Underfull \hbox (badness 3646) in paragraph at lines 252--252
 []|[]\OT1/cmr/m/n/12 BW B[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 227--227
+Underfull \hbox (badness 10000) in paragraph at lines 252--252
 []|\OT1/cmr/m/n/12 Total
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 227--227
+Underfull \hbox (badness 10000) in paragraph at lines 252--252
 \OT1/cmr/m/n/12 pack-
  []
 
 
-Overfull \hbox (6.39359pt too wide) in paragraph at lines 227--227
+Overfull \hbox (6.39359pt too wide) in paragraph at lines 252--252
 []|\OT1/cmr/m/it/12 Keyframe
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 227--227
+Underfull \hbox (badness 10000) in paragraph at lines 252--252
 \OT1/cmr/m/n/12 pack-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 227--227
+Underfull \hbox (badness 10000) in paragraph at lines 252--252
 []|\OT1/cmr/m/it/12 Non-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 227--227
+Underfull \hbox (badness 10000) in paragraph at lines 252--252
 \OT1/cmr/m/it/12 Keyframe
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 227--228
+Underfull \hbox (badness 10000) in paragraph at lines 252--253
 []|\OT1/cmr/m/n/12 Time
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 227--228
+Underfull \hbox (badness 10000) in paragraph at lines 252--253
 \OT1/cmr/m/n/12 elapsed
  []
 
 
-Overfull \hbox (2.2275pt too wide) in paragraph at lines 231--231
+Overfull \hbox (2.2275pt too wide) in paragraph at lines 256--256
 []|\OT1/cmr/m/n/12 46.9%| 
  []
 
 
-Overfull \hbox (2.2275pt too wide) in paragraph at lines 232--232
+Overfull \hbox (2.2275pt too wide) in paragraph at lines 257--257
 []|\OT1/cmr/m/n/12 96.8%| 
  []
 
 
-Overfull \hbox (2.2275pt too wide) in paragraph at lines 233--233
+Overfull \hbox (2.2275pt too wide) in paragraph at lines 258--258
 []|\OT1/cmr/m/n/12 46.9%| 
  []
 
 
-Overfull \hbox (2.2275pt too wide) in paragraph at lines 238--238
+Overfull \hbox (2.2275pt too wide) in paragraph at lines 263--263
 []|\OT1/cmr/m/n/12 28.8%| 
  []
 
 
-Overfull \hbox (21.68152pt too wide) in paragraph at lines 225--243
+Overfull \hbox (21.68152pt too wide) in paragraph at lines 250--268
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 225--243
+Underfull \hbox (badness 10000) in paragraph at lines 250--268
 
  []
 
-<figures/crosstraffic.png, id=204, 725.71124pt x 612.2875pt>
+Package epstopdf Info: Source file: <figures/rand_slow_16_1_50.eps>
+(epstopdf)                    date: 2016-08-09 00:43:43
+(epstopdf)                    size: 160370 bytes
+(epstopdf)             Output file: <figures/rand_slow_16_1_50-eps-converted-to
+.pdf>
+(epstopdf)                    date: 2016-08-09 06:01:35
+(epstopdf)                    size: 22974 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/rand_slow_16_1_50-
+eps-converted-to.pdf figures/rand_slow_16_1_50.eps>
+(epstopdf)             \includegraphics on input line 278.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/rand_slow_16_1_50-eps-converted-to.pdf, id=232, 718.685pt x 817.0525pt
+>
+File: figures/rand_slow_16_1_50-eps-converted-to.pdf Graphic file (type pdf)
+ <use figures/rand_slow_16_1_50-eps-converted-to.pdf>
+Package pdftex.def Info: figures/rand_slow_16_1_50-eps-converted-to.pdf used on
+ input line 278.
+(pdftex.def)             Requested size: 395.27797pt x 449.38028pt.
+Package epstopdf Info: Source file: <figures/rand_med_16_1_50.eps>
+(epstopdf)                    date: 2016-08-09 00:43:43
+(epstopdf)                    size: 346628 bytes
+(epstopdf)             Output file: <figures/rand_med_16_1_50-eps-converted-to.
+pdf>
+(epstopdf)                    date: 2016-08-09 06:01:37
+(epstopdf)                    size: 18252 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/rand_med_16_1_50-e
+ps-converted-to.pdf figures/rand_med_16_1_50.eps>
+(epstopdf)             \includegraphics on input line 284.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/rand_med_16_1_50-eps-converted-to.pdf, id=233, 721.69624pt x 817.0525p
+t>
+File: figures/rand_med_16_1_50-eps-converted-to.pdf Graphic file (type pdf)
+ <use figures/rand_med_16_1_50-eps-converted-to.pdf>
+Package pdftex.def Info: figures/rand_med_16_1_50-eps-converted-to.pdf used on 
+input line 284.
+(pdftex.def)             Requested size: 396.93416pt x 449.38028pt.
+ [12
+
+] [13 <./figures/rand_slow_16_1_50-eps-converted-to.pdf>] [14 <./figures/rand_m
+ed_16_1_50-eps-converted-to.pdf>] <figures/crosstraffic.png, id=259, 725.71124p
+t x 612.2875pt>
 File: figures/crosstraffic.png Graphic file (type png)
 
 <use figures/crosstraffic.png>
-Package pdftex.def Info: figures/crosstraffic.png used on input line 250.
+Package pdftex.def Info: figures/crosstraffic.png used on input line 302.
 (pdftex.def)             Requested size: 460.72124pt x 388.72351pt.
 
-Underfull \hbox (badness 2884) in paragraph at lines 262--262
+Underfull \hbox (badness 2884) in paragraph at lines 316--316
 []|[]\OT1/cmr/m/n/12 BW A[]
  []
 
 
-Underfull \hbox (badness 3646) in paragraph at lines 262--262
+Underfull \hbox (badness 3646) in paragraph at lines 316--316
 []|[]\OT1/cmr/m/n/12 BW B[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 262--262
+Underfull \hbox (badness 10000) in paragraph at lines 316--316
 []|\OT1/cmr/m/n/12 Total
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 262--262
+Underfull \hbox (badness 10000) in paragraph at lines 316--316
 \OT1/cmr/m/n/12 pack-
  []
 
 
-Overfull \hbox (6.39359pt too wide) in paragraph at lines 262--262
+Overfull \hbox (6.39359pt too wide) in paragraph at lines 316--316
 []|\OT1/cmr/m/it/12 Keyframe
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 262--262
+Underfull \hbox (badness 10000) in paragraph at lines 316--316
 \OT1/cmr/m/n/12 pack-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 262--262
+Underfull \hbox (badness 10000) in paragraph at lines 316--316
 []|\OT1/cmr/m/it/12 Non-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 262--262
+Underfull \hbox (badness 10000) in paragraph at lines 316--316
 \OT1/cmr/m/it/12 Keyframe
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 262--263
+Underfull \hbox (badness 10000) in paragraph at lines 316--317
 []|\OT1/cmr/m/n/12 Time
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 262--263
+Underfull \hbox (badness 10000) in paragraph at lines 316--317
 \OT1/cmr/m/n/12 elapsed
  []
 
 
-Overfull \hbox (2.2275pt too wide) in paragraph at lines 266--266
+Overfull \hbox (2.2275pt too wide) in paragraph at lines 320--320
 []|\OT1/cmr/m/n/12 46.9%| 
  []
 
 
-Overfull \hbox (2.2275pt too wide) in paragraph at lines 267--267
+Overfull \hbox (2.2275pt too wide) in paragraph at lines 321--321
 []|\OT1/cmr/m/n/12 96.8%| 
  []
 
 
-Overfull \hbox (2.2275pt too wide) in paragraph at lines 268--268
+Overfull \hbox (2.2275pt too wide) in paragraph at lines 322--322
 []|\OT1/cmr/m/n/12 46.9%| 
  []
 
 
-Overfull \hbox (2.2275pt too wide) in paragraph at lines 273--273
+Overfull \hbox (2.2275pt too wide) in paragraph at lines 327--327
 []|\OT1/cmr/m/n/12 51.2%| 
  []
 
 
-Overfull \hbox (21.68152pt too wide) in paragraph at lines 260--278
+Overfull \hbox (21.68152pt too wide) in paragraph at lines 314--332
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 260--278
+Underfull \hbox (badness 10000) in paragraph at lines 314--332
 
  []
 
-) [9] [10] [11 <./figures/crosstraffic.png>]
-\openout2 = `Conclusions.aux'.
+[15
 
- (./Conclusions.tex
-Chapter 5.
-) [12
+ <./figures/crosstraffic.png>]
+Package epstopdf Info: Source file: <figures/sample_slow_16_1.eps>
+(epstopdf)                    date: 2016-08-09 01:18:08
+(epstopdf)                    size: 158849 bytes
+(epstopdf)             Output file: <figures/sample_slow_16_1-eps-converted-to.
+pdf>
+(epstopdf)                    date: 2016-08-09 06:25:51
+(epstopdf)                    size: 23045 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/sample_slow_16_1-e
+ps-converted-to.pdf figures/sample_slow_16_1.eps>
+(epstopdf)             \includegraphics on input line 339.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/sample_slow_16_1-eps-converted-to.pdf, id=265, 715.67375pt x 817.0525p
+t>
+File: figures/sample_slow_16_1-eps-converted-to.pdf Graphic file (type pdf)
+ <use figures/sample_slow_16_1-eps-converted-to.pdf>
+Package pdftex.def Info: figures/sample_slow_16_1-eps-converted-to.pdf used on 
+input line 339.
+(pdftex.def)             Requested size: 393.62178pt x 449.38028pt.
+Package epstopdf Info: Source file: <figures/sample_med_16_1.eps>
+(epstopdf)                    date: 2016-08-09 01:18:08
+(epstopdf)                    size: 222824 bytes
+(epstopdf)             Output file: <figures/sample_med_16_1-eps-converted-to.p
+df>
+(epstopdf)                    date: 2016-08-09 06:25:52
+(epstopdf)                    size: 16917 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/sample_med_16_1-ep
+s-converted-to.pdf figures/sample_med_16_1.eps>
+(epstopdf)             \includegraphics on input line 345.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/sample_med_16_1-eps-converted-to.pdf, id=266, 715.67375pt x 817.0525pt
+>
+File: figures/sample_med_16_1-eps-converted-to.pdf Graphic file (type pdf)
+ <use figures/sample_med_16_1-eps-converted-to.pdf>
+Package pdftex.def Info: figures/sample_med_16_1-eps-converted-to.pdf used on i
+nput line 345.
+(pdftex.def)             Requested size: 393.62178pt x 449.38028pt.
+ [16] [17 <./figures/sample_slow_16_1-eps-converted-to.pdf>] [18 <./figures/sam
+ple_med_16_1-eps-converted-to.pdf>]
+Underfull \hbox (badness 6825) in paragraph at lines 372--372
+[]|\OT1/cmr/m/n/12 Medium Chan-
+ []
 
 
+Underfull \hbox (badness 6825) in paragraph at lines 377--377
+[]|\OT1/cmr/m/n/12 Medium Chan-
+ []
 
-]
+
+Underfull \hbox (badness 6825) in paragraph at lines 382--382
+[]|\OT1/cmr/m/n/12 Medium Chan-
+ []
+
+
+Underfull \hbox (badness 6825) in paragraph at lines 387--387
+[]|\OT1/cmr/m/n/12 Medium Chan-
+ []
+
+[19
+
+]) [20]
 \openout2 = `Appendix.aux'.
 
  (./Appendix.tex
 Appendix A.
 
+Underfull \hbox (badness 1496) in paragraph at lines 19--20
+[]|\OT1/cmr/m/n/12 Binary vari-able coded as in-te-ger, ei-ther
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 21--21
 []|\OT1/cmr/m/n/12 Segment Num-
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 25--25
-[]|\OT1/cmr/m/n/12 66
- []
-
-
-Underfull \hbox (badness 1533) in paragraph at lines 25--26
-[]|\OT1/cmr/m/n/12 Necessary filler to achieve spec-i-fied
- []
-
-[13
+[21
 
 
 
@@ -833,7 +965,7 @@ ps-converted-to.pdf figures/nocross_slow_1_4.eps>
 (epstopdf)             \includegraphics on input line 40.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/nocross_slow_1_4-eps-converted-to.pdf, id=231, 715.67375pt x 817.0525p
+<figures/nocross_slow_1_4-eps-converted-to.pdf, id=308, 715.67375pt x 817.0525p
 t>
 File: figures/nocross_slow_1_4-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/nocross_slow_1_4-eps-converted-to.pdf>
@@ -852,7 +984,7 @@ s-converted-to.pdf figures/nocross_med_1_4.eps>
 (epstopdf)             \includegraphics on input line 46.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/nocross_med_1_4-eps-converted-to.pdf, id=232, 718.685pt x 817.0525pt>
+<figures/nocross_med_1_4-eps-converted-to.pdf, id=309, 718.685pt x 817.0525pt>
 File: figures/nocross_med_1_4-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/nocross_med_1_4-eps-converted-to.pdf>
@@ -871,7 +1003,7 @@ o.pdf>
 (epstopdf)             \includegraphics on input line 54.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/nocross_slow_16_16-eps-converted-to.pdf, id=233, 718.685pt x 817.0525p
+<figures/nocross_slow_16_16-eps-converted-to.pdf, id=310, 718.685pt x 817.0525p
 t>
 File: figures/nocross_slow_16_16-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/nocross_slow_16_16-eps-converted-to.pdf>
@@ -890,7 +1022,7 @@ eps-converted-to.pdf figures/nocross_med_16_16.eps>
 (epstopdf)             \includegraphics on input line 60.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/nocross_med_16_16-eps-converted-to.pdf, id=234, 718.685pt x 817.0525pt
+<figures/nocross_med_16_16-eps-converted-to.pdf, id=311, 718.685pt x 817.0525pt
 >
 File: figures/nocross_med_16_16-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/nocross_med_16_16-eps-converted-to.pdf>
@@ -909,7 +1041,7 @@ ps-converted-to.pdf figures/rand_slow_1_4_50.eps>
 (epstopdf)             \includegraphics on input line 69.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/rand_slow_1_4_50-eps-converted-to.pdf, id=235, 721.69624pt x 817.0525p
+<figures/rand_slow_1_4_50-eps-converted-to.pdf, id=312, 721.69624pt x 817.0525p
 t>
 File: figures/rand_slow_1_4_50-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/rand_slow_1_4_50-eps-converted-to.pdf>
@@ -928,7 +1060,7 @@ s-converted-to.pdf figures/rand_med_1_4_50.eps>
 (epstopdf)             \includegraphics on input line 75.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/rand_med_1_4_50-eps-converted-to.pdf, id=236, 718.685pt x 817.0525pt>
+<figures/rand_med_1_4_50-eps-converted-to.pdf, id=313, 718.685pt x 817.0525pt>
 File: figures/rand_med_1_4_50-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/rand_med_1_4_50-eps-converted-to.pdf>
@@ -947,7 +1079,7 @@ o.pdf>
 (epstopdf)             \includegraphics on input line 81.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/rand_slow_16_16_50-eps-converted-to.pdf, id=237, 737.75626pt x 817.052
+<figures/rand_slow_16_16_50-eps-converted-to.pdf, id=314, 737.75626pt x 817.052
 5pt>
 File: figures/rand_slow_16_16_50-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/rand_slow_16_16_50-eps-converted-to.pdf>
@@ -966,7 +1098,7 @@ eps-converted-to.pdf figures/rand_med_16_16_50.eps>
 (epstopdf)             \includegraphics on input line 87.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/rand_med_16_16_50-eps-converted-to.pdf, id=238, 718.685pt x 817.0525pt
+<figures/rand_med_16_16_50-eps-converted-to.pdf, id=315, 718.685pt x 817.0525pt
 >
 File: figures/rand_med_16_16_50-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/rand_med_16_16_50-eps-converted-to.pdf>
@@ -985,7 +1117,7 @@ s-converted-to.pdf figures/sample_slow_1_4.eps>
 (epstopdf)             \includegraphics on input line 95.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/sample_slow_1_4-eps-converted-to.pdf, id=239, 715.67375pt x 817.0525pt
+<figures/sample_slow_1_4-eps-converted-to.pdf, id=316, 715.67375pt x 817.0525pt
 >
 File: figures/sample_slow_1_4-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/sample_slow_1_4-eps-converted-to.pdf>
@@ -1004,7 +1136,7 @@ f>
 (epstopdf)             \includegraphics on input line 101.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/sample_med_1_4-eps-converted-to.pdf, id=240, 715.67375pt x 817.0525pt>
+<figures/sample_med_1_4-eps-converted-to.pdf, id=317, 715.67375pt x 817.0525pt>
 File: figures/sample_med_1_4-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/sample_med_1_4-eps-converted-to.pdf>
 Package pdftex.def Info: figures/sample_med_1_4-eps-converted-to.pdf used on in
@@ -1022,7 +1154,7 @@ eps-converted-to.pdf figures/sample_slow_16_16.eps>
 (epstopdf)             \includegraphics on input line 107.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/sample_slow_16_16-eps-converted-to.pdf, id=241, 715.67375pt x 817.0525
+<figures/sample_slow_16_16-eps-converted-to.pdf, id=318, 715.67375pt x 817.0525
 pt>
 File: figures/sample_slow_16_16-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/sample_slow_16_16-eps-converted-to.pdf>
@@ -1041,60 +1173,60 @@ ps-converted-to.pdf figures/sample_med_16_16.eps>
 (epstopdf)             \includegraphics on input line 113.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/sample_med_16_16-eps-converted-to.pdf, id=242, 715.67375pt x 817.0525p
+<figures/sample_med_16_16-eps-converted-to.pdf, id=319, 715.67375pt x 817.0525p
 t>
 File: figures/sample_med_16_16-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/sample_med_16_16-eps-converted-to.pdf>
 Package pdftex.def Info: figures/sample_med_16_16-eps-converted-to.pdf used on 
 input line 113.
 (pdftex.def)             Requested size: 460.72124pt x 525.99123pt.
-) [14
+) [22
 
-] [15 <./figures/nocross_slow_1_4-eps-converted-to.pdf>] [16 <./figures/nocross
-_med_1_4-eps-converted-to.pdf>] [17 <./figures/nocross_slow_16_16-eps-converted
--to.pdf>] [18 <./figures/nocross_med_16_16-eps-converted-to.pdf>] [19 <./figure
-s/rand_slow_1_4_50-eps-converted-to.pdf>] [20 <./figures/rand_med_1_4_50-eps-co
+] [23 <./figures/nocross_slow_1_4-eps-converted-to.pdf>] [24 <./figures/nocross
+_med_1_4-eps-converted-to.pdf>] [25 <./figures/nocross_slow_16_16-eps-converted
+-to.pdf>] [26 <./figures/nocross_med_16_16-eps-converted-to.pdf>] [27 <./figure
+s/rand_slow_1_4_50-eps-converted-to.pdf>] [28 <./figures/rand_med_1_4_50-eps-co
 nverted-to.pdf>]
-[21 <./figures/rand_slow_16_16_50-eps-converted-to.pdf>] [22 <./figures/rand_me
-d_16_16_50-eps-converted-to.pdf>] [23 <./figures/sample_slow_1_4-eps-converted-
-to.pdf>] [24 <./figures/sample_med_1_4-eps-converted-to.pdf>] [25 <./figures/sa
-mple_slow_16_16-eps-converted-to.pdf>] [26 <./figures/sample_med_16_16-eps-conv
+[29 <./figures/rand_slow_16_16_50-eps-converted-to.pdf>] [30 <./figures/rand_me
+d_16_16_50-eps-converted-to.pdf>] [31 <./figures/sample_slow_1_4-eps-converted-
+to.pdf>] [32 <./figures/sample_med_1_4-eps-converted-to.pdf>] [33 <./figures/sa
+mple_slow_16_16-eps-converted-to.pdf>] [34 <./figures/sample_med_16_16-eps-conv
 erted-to.pdf>] (./report.lof)
 \tf@lof=\write5
 \openout5 = `report.lof'.
 
- [27
+ [35
 
 
 ] (./report.lot)
 \tf@lot=\write6
 \openout6 = `report.lot'.
 
- (./report.bbl [28
+ (./report.bbl [36
 
 ])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 120.
- [29
+ [37
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 120.
 
 (./report.aux (./StatementsEN.aux) (./Introduction.aux) (./main.aux)
-(./Conclusions.aux) (./Appendix.aux))
+(./Appendix.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 120.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 120.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 933E7A0525B38E6684AA2AEDC232F1AA;1344.
+(rerunfilecheck)             Checksum: F186AA2E08EDA7AA68E65AE4318AD911;1362.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 120.
  ) 
 Here is how much of TeX's memory you used:
- 7520 strings out of 493304
- 113056 string characters out of 6139872
- 245260 words of memory out of 5000000
- 10713 multiletter control sequences out of 15000+600000
+ 7554 strings out of 493304
+ 114316 string characters out of 6139872
+ 233909 words of memory out of 5000000
+ 10733 multiletter control sequences out of 15000+600000
  11033 words of font info for 38 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 45i,11n,45p,800b,390s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 45i,11n,45p,873b,390s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texliv
@@ -1103,10 +1235,10 @@ f-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmti12.pfb>
-Output written on report.pdf (32 pages, 454580 bytes).
+Output written on report.pdf (40 pages, 574089 bytes).
 PDF statistics:
- 475 PDF objects out of 1000 (max. 8388607)
- 397 compressed objects within 4 object streams
- 89 named destinations out of 1000 (max. 500000)
- 255 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 569 PDF objects out of 1000 (max. 8388607)
+ 470 compressed objects within 5 object streams
+ 104 named destinations out of 1000 (max. 500000)
+ 285 words of extra memory for PDF output out of 10000 (max. 10000000)
 

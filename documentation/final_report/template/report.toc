@@ -12,14 +12,14 @@
 \contentsline {chapter}{\numberline {4}Testing}{7}{chapter.4}
 \contentsline {section}{\numberline {4.1}Test Results}{9}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}No cross-traffic}{9}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Random cross-traffic}{9}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Sample pattern of cross-traffic}{9}{subsection.4.1.3}
-\contentsline {chapter}{\numberline {5}Zusammenfassung}{12}{chapter.5}
-\contentsline {chapter}{\numberline {A}Packet structure}{13}{appendix.A}
-\contentsline {chapter}{\numberline {B}Other test results}{14}{appendix.B}
-\contentsline {section}{\numberline {B.1}No crosstraffic}{14}{section.B.1}
-\contentsline {section}{\numberline {B.2}Random Crosstraffic}{14}{section.B.2}
-\contentsline {section}{\numberline {B.3}Sample Crosstraffic}{14}{section.B.3}
-\contentsline {chapter}{List of Figures}{27}{appendix*.2}
-\contentsline {chapter}{List of Tables}{28}{appendix*.3}
-\contentsline {chapter}{Bibliography}{29}{appendix*.4}
+\contentsline {subsection}{\numberline {4.1.2}Random cross-traffic}{12}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Sample pattern of cross-traffic}{15}{subsection.4.1.3}
+\contentsline {section}{\numberline {4.2}Discussion of results}{19}{section.4.2}
+\contentsline {chapter}{\numberline {A}Packet structure}{21}{appendix.A}
+\contentsline {chapter}{\numberline {B}Other test results}{22}{appendix.B}
+\contentsline {section}{\numberline {B.1}No crosstraffic}{22}{section.B.1}
+\contentsline {section}{\numberline {B.2}Random Cross-traffic}{22}{section.B.2}
+\contentsline {section}{\numberline {B.3}Sample Crosstraffic}{22}{section.B.3}
+\contentsline {chapter}{List of Figures}{35}{appendix*.2}
+\contentsline {chapter}{List of Tables}{36}{appendix*.3}
+\contentsline {chapter}{Bibliography}{37}{appendix*.4}

@@ -151,7 +151,7 @@ Additionally, the following channel loads or cross-traffic patterns were investi
 
 The random cross-traffic patterns produce Poisson-distributed bursts of packets of 1500 Bytes of length, around the size of the average packet length. 
 
-The sample pattern of cross-traffic was a 
+The sample pattern of cross-traffic was a random packet flow synthesized with packet lengths similar in size to the video traces used in the experiment.
 
 Two video traces were used and had the following properties:
 
@@ -198,22 +198,47 @@ The tests run with no cross-traffic serve primarily to set a benchmark to compar
 \hline
 \multicolumn{7}{|c|}{Slow Channel} \\
 \hline
-1&4&1465&687&46.9\%&778&17.35\\
-16&1&697&687&98.6\%&10&1.08\\
-16&16&1465&687&46.9\%&778&1.08\\
+1&4&1465&687&46.9\%&778&17.4\\
+16&1&697&687&98.6\%&10&1.1\\
+16&16&1465&687&46.9\%&778&1.1\\
 \hline
 \rowcolor{white}\multicolumn{7}{|c|}{Medium Channel} \\
 \hline
-1&4&15677&632&4.0\%&15045&186.26\\
-16&1&1163&632&54.3\%&531&11.57\\
-16&16&15677&633&4.0\%&15046&11.64\\
+1&4&15677&632&4.0\%&15045&186.3\\
+16&1&1163&632&54.3\%&531&11.6\\
+16&16&15677&633&4.0\%&15046&11.7\\
 \hline
 \end{tabular}
 }
 \end{table}
 
+Looking at the numbers Table 4.2, it becomes apparent that my expectations were more or less correct for the measurements taken. In the first path configuration, all packages sent are received and the percentage of \textit{keyframes} remains unchanged; this means that no buffer flushing was necessary during processing of the packets. It does not matter whether Path B has the same bandwidth or indeed a larger one by an order of magnitude, the queue implemented in the flusher is quite capable of handling the incoming traffic without a hitch. This is also the case for the third path configuration, with the only significant difference between the two being the time elapsed for packets to be received by the packet sniffer at the end of the path. This, of course can be explained quite easily by the difference in bandwidths.
+
+The second path configuration, as expected, is much more interesting in terms of function of the buffer flusher.
+
+\begin{figure}[!ht]
+\caption{No cross-traffic; Slow Channel (Path A : 16 Mbps, Path B : 1 Mbps)}
+\centering
+\includegraphics[scale = 0.55]{nocross_slow_16_1}
+\end{figure}
+
+\begin{figure}[!ht]
+\caption{No cross-traffic; Medium Channel (Path A : 16 Mbps, Path B : 1 Mbps)}
+\centering
+\includegraphics[scale = 0.55]{nocross_med_16_1}
+\end{figure}
+
+A preliminary look at the data for this path shows a very important difference with the video traces before entering the flusher. In the case of the slow channel, the keyframe percentage jumps from 46.9\% of all incoming packets to 98.6\%, more than a twofold increase. In the case of the medium channel the increase is even more drastic, going from 4.0\% all the way up to 54.3\%, thus increasing by a factor larger than 12.
+
+Despite this, the amount of \textit{keyframe} remains constant, correctly sending the packet sniffer all packets that it receives. The time elapsed also suffers no perceptible change compared to the case with no buffer flushing, despite the high activity of the flusher.
+
+A particularly interesting observation in both Figure 4.1 and 4.2 is the large gap of packets sent around the middle of the time axis. This corresponds to one of the largest buffer flushes that take place, a fact that one can easily corroborate by looking at the amount of \textit{non-keyframes} that fill that gap in other bandwidth combinations (see Appendix B). In terms of video frames, this would probably signify a relatively long scene showing very similar images from frame to frame.
+
+\clearpage
 
 \subsection{Random cross-traffic}
+
+As previously mentioned, these tests were run by occupying a certain percentage of the channel capacity with random bursts of packets. In this section we discuss the case of 50\% channel occupation to illustrate overall observations. The other results are included in the repository \textit{test\_results} and exhibit very similar results.
 
 \begin{table}[htbp]
 \caption{Random cross-traffic, 50\% channel occupation}
@@ -242,13 +267,42 @@ The tests run with no cross-traffic serve primarily to set a benchmark to compar
 }
 \end{table}
 
+As can be ascertained from Table 4.3, the operation of the flusher is extremely similar to the case without cross-traffic. The similarity between the first and third bandwidth combinations is roughly maintained, including the ratio between their two elapsed times.
+
+The first of the two largest differences is the differences in time elapsed, both in the slow and the medium channel. The transmitted video traces take around twice as long to be ready to be transmitted, compared to the first case observed. This is, naturally, due to the channel occupation rate, evident in the neat correspondence between a twofold increase in time and a halving of the available channel. 
+
+
+\begin{figure}[!ht]
+\caption{Random cross-traffic; Slow Channel (Path A : 16 Mbps, Path B : 1 Mbps), 50\% channel occupation rate}
+\centering
+\includegraphics[scale = 0.55]{rand_slow_16_1_50}
+\end{figure}
+
+\begin{figure}[!ht]
+\caption{Random cross-traffic; Medium Channel (Path A : 16 Mbps, Path B : 1 Mbps), 50\% channel occupation rate}
+\centering
+\includegraphics[scale = 0.55]{rand_med_16_1_50}
+\end{figure}
+
+The second difference lies in the case with active buffer flushing. Note the fact that in no occasion is the absolute amount of \textit{keyframe} packets lower than expected: all of them continued to be ready to be transmitted as expected, with no drops. It is the relative percentage of \textit{keyframe} packets that sinks compared to the first set of measurements.
+
+In the slow channel, the relatively low amount of overall packages masks this phenomenon, with a change of only 1.8\% between both sets. In the medium channel, however, the difference is 25.5\%. The reason lies in the effectively lower bandwidth with which the buffer flusher receives packages from the channel. With a lower incoming rate, the flusher triggers less frequently, thus letting more \textit{non-keyframes} packages through. Thus, despite small disruption, the application still exhibits the expected function.
+
+\clearpage
+
 \subsection{Sample pattern of cross-traffic}
+
+Finally, the third set of measurements was performed with background channel traffic corresponding to a packet capture synthesized especially for this purpose and designed to resemble a normal usage of the channel by some other application. The file containing the capture was uploaded to the network emulator, where it was replayed along with the packet transfer. 
+
+A graphic representation of the sample can be seen in Figure 4.5.
 
 \begin{figure}[!ht]
 \caption{Sample cross-traffic}
 \centering
 \includegraphics[width = \textwidth]{crosstraffic}
 \end{figure}
+
+A glancing look at Table 4.4 reveals very familiar numbers, evidencing the similarity between this measurement set and the first.
 
 \begin{table}[htbp]
 \caption{Sample cross-traffic}
@@ -276,3 +330,68 @@ The tests run with no cross-traffic serve primarily to set a benchmark to compar
 \end{tabular}
 }
 \end{table}
+
+In this set, the phenomena already discussed in the previous two are replicated. The amount of \textit{keyframe} packets remains the same, without any drops. The percentage of \textit{keyframes} compared to the overall packets is much closer to that of the first, unhindered transmission, with a very small dent that can be explained by the rate of channel utilization.
+
+\begin{figure}[!ht]
+\caption{Sample cross-traffic ; Slow Channel (Path A : 16 Mbps, Path B : 1 Mbps)}
+\centering
+\includegraphics[scale = 0.55]{sample_slow_16_1}
+\end{figure}
+
+\begin{figure}[!ht]
+\caption{Sample cross-traffic ; Medium Channel (Path A : 16 Mbps, Path B : 1 Mbps)}
+\centering
+\includegraphics[scale = 0.55]{sample_med_16_1}
+\end{figure}
+
+The graphs in Figures 4.6 and 4.7 exhibit a slightly more erratic behavior compared both to the first and second measurement sets, most probably due to the fact that the background traffic exhibits more variation than in the Poisson-distributed random cross-traffic case. Despite this, the overall trends remain constant. 
+
+\clearpage
+
+\section{Discussion of results}
+
+In the course of our testing, we have observed the performance of a buffer flusher for packets of video frames under different constraints. These have included different combinations of incoming and outgoing data rates as well as various forms of channel occupancy between packet creation and the buffer flusher. An effort was also made to leave behind documentation (both for Click and the packet creation scripts) in order to facilitate any other further work in this topic.
+
+The developed buffer flusher has demonstrated the capacity to process large amounts of packets in varying time frames, effectively flushing those with lower priority when the need arises. None of the \textit{keyframes} were dropped in any experiment and the time added to the process by the application remained neglectable. 
+
+The effectiveness of the ultimate goal, which is the reduction of the overall transmitted data necessary to transfer all the \textit{keyframes} from one service to the other, can be easily calculated. Table 4.5 illustrates this using the results from the second measurement set.
+
+\begin{table}[htbp]
+\caption{File size to be sent after buffer flusher}
+\break
+\setlength{\arrayrulewidth}{1mm}
+\setlength{\tabcolsep}{12pt}
+\renewcommand{\arraystretch}{1.5}
+ {\rowcolors{2}{whitesmoke}{silver}
+\begin{tabular}{ |p{3cm}|p{3cm}|p{3cm}|p{3cm}| }
+\hline
+\rowcolor{white}\multicolumn{4}{|c|}{Video traces before flushing} \\
+\hline
+Slow Channel&1465&46.9\%&2.20 MB\\
+Medium Channel&15677&4.0\%&23.52 MB\\
+\hline
+\rowcolor{white}\multicolumn{4}{|c|}{No cross-traffic} \\
+\hline
+Slow Channel&697&98.6\%&1.05 MB\\
+Medium Channel&1163&54.3\%&1.74 MB\\
+\hline
+\rowcolor{white}\multicolumn{4}{|c|}{Random cross-traffic} \\
+\hline
+Slow Channel&710&96.8\%&1.07 MB\\
+Medium Channel&2195&28.8\%&3.30 MB\\
+\hline
+\rowcolor{white}\multicolumn{4}{|c|}{Sample cross-traffic} \\
+\hline
+Slow Channel&710&96.8\%&1.07 MB\\
+Medium Channel&1234&51.2\%&1.85 MB\\
+\hline
+\end{tabular}
+}
+\end{table}
+
+As is especially visible in files with a higher percentage of \textit{non-keyframes}, the difference between unadulterated and flushed files is significant, reaching up to a 92.6\% reduction in total file size to be transferred in the case with no cross-traffic.
+
+All of the observations described in this report also reflect the measurements not discussed here due to concerns for repetitiveness or readability. For the packet capture files of these other measurements please refer to the \textit{test\_results repository}.
+
+Thus we have fulfilled all the initial goals of the project except for the integration with the Linux kernel, which was deemed out of the time scope of this Engineer practice.
