@@ -4,43 +4,40 @@ The top-level auxiliary file: report.aux
 A level-1 auxiliary file: StatementsEN.aux
 A level-1 auxiliary file: Introduction.aux
 A level-1 auxiliary file: main.aux
-A level-1 auxiliary file: Conclusions.aux
 A level-1 auxiliary file: Appendix.aux
 The style file: unsrt.bst
 Database file #1: Bibliography.bib
 Database file #2: references.bib
-Warning--empty journal in Bachhuber
-Warning--empty year in Bachhuber
-You've used 6 entries,
+You've used 5 entries,
             1791 wiz_defined-function locations,
-            492 strings with 5164 characters,
-and the built_in function-call counts, 1787 in all, are:
-= -- 160
-> -- 93
+            487 strings with 4971 characters,
+and the built_in function-call counts, 1619 in all, are:
+= -- 151
+> -- 79
 < -- 3
-+ -- 33
-- -- 27
-* -- 126
-:= -- 278
-add.period$ -- 17
-call.type$ -- 6
-change.case$ -- 6
++ -- 28
+- -- 23
+* -- 113
+:= -- 248
+add.period$ -- 15
+call.type$ -- 5
+change.case$ -- 5
 chr.to.int$ -- 0
-cite$ -- 8
-duplicate$ -- 78
-empty$ -- 146
-format.name$ -- 27
-if$ -- 396
+cite$ -- 5
+duplicate$ -- 70
+empty$ -- 132
+format.name$ -- 23
+if$ -- 363
 int.to.chr$ -- 0
-int.to.str$ -- 6
-missing$ -- 6
-newline$ -- 32
-num.names$ -- 6
-pop$ -- 17
+int.to.str$ -- 5
+missing$ -- 5
+newline$ -- 28
+num.names$ -- 5
+pop$ -- 11
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 52
+skip$ -- 49
 stack$ -- 0
 substring$ -- 138
 swap$ -- 30
@@ -48,8 +45,7 @@ text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 2
-while$ -- 19
-width$ -- 7
-write$ -- 64
-(There were 2 warnings)
+warning$ -- 0
+while$ -- 18
+width$ -- 6
+write$ -- 57

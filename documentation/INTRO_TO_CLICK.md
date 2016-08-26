@@ -33,6 +33,19 @@ Note that there are many elements that are exclusive to either the user or the k
 LEARNING CLICK
 =======
 
+The first thing to do is look at the small tutorial in the Click website (http://read.cs.ucla.edu/click/tutorial1). It's made for people that already have some experience with packet manipulation. If you have no previous experience, it's still very useful for catching up to syntax and the underlying structure of it all. Note that you can see the answers (http://read.cs.ucla.edu/click/tutorial1solutions) too (I recommend comparing them side by side).
+
+The example configurations can also give some good insight into how Click actually manages packets. You can find example configurations in the click folder, under:
+.../click/conf
+There's also a small explanation for each online (http://read.cs.ucla.edu/click/examples).
+
+Finally, the University of Antwerp has some good presentations explaining Click at a more fundamental level. These are really useful especially for writing your own elements (https://www.pats.ua.ac.be/software). 
+
+Speaking of creating your own elements, take your cues from the elements already given. They work. They are not amazingly documented, but the Doxygen documentation may help a lot (http://read.cs.ucla.edu/click/doxygen/) - remember to use the search function to find what you need.
+
+There's also some old mailing lists still floating around the internet that maaaay have answers for your problems (https://pdos.csail.mit.edu/pipermail/click/). Remember to use google or something to trawl through it, its a bunch of text. 
+
+
 RUNNING YOUR CONFIG FILE
 =======
 
@@ -78,5 +91,3 @@ or by listing all current kernel threads. The following command is one of many t
 $ps -ef | grep "\[" 
 
 Look for the one with the name "kclick".
-
-USEFUL RESOURCES

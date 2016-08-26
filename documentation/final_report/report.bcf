@@ -1965,5 +1965,8 @@
   </bcf:bibdata>
   <bcf:section number="0">
     <bcf:citekey order="1">Bachhuber</bcf:citekey>
+    <bcf:citekey order="2">eberspaecher97</bcf:citekey>
+    <bcf:citekey order="3">arnaud99</bcf:citekey>
+    <bcf:citekey order="3">griswold90</bcf:citekey>
   </bcf:section>
 </bcf:controlfile>

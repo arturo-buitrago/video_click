@@ -1,3 +1,28 @@
-\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
-\defcounter {refsection}{0}\relax 
 \select@language {ngerman}
+\select@language {american}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces No cross-traffic; Slow Channel (Path A : 16 Mbps, Path B : 1 Mbps), measured at the end of Path B}}{10}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces No cross-traffic; Medium Channel (Path A : 16 Mbps, Path B : 1 Mbps), measured at the end of Path B}}{11}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Random cross-traffic; Slow Channel (Path A : 16 Mbps, Path B : 1 Mbps), 50\% channel occupation rate, measured at the end of Path B}}{13}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Random cross-traffic; Medium Channel (Path A : 16 Mbps, Path B : 1 Mbps), 50\% channel occupation rate, measured at the end of Path B}}{14}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Sample cross-traffic}}{15}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Sample cross-traffic ; Slow Channel (Path A : 16 Mbps, Path B : 1 Mbps), measured at the end of Path B}}{17}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Sample cross-traffic ; Medium Channel (Path A : 16 Mbps, Path B : 1 Mbps), measured at the end of Path B}}{18}{figure.4.7}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {B.1}{\ignorespaces No cross-traffic ; Slow Channel (Path A : 1 Mbps, Path B : 4 Mbps)}}{23}{figure.B.1}
+\contentsline {figure}{\numberline {B.2}{\ignorespaces No cross-traffic ; Medium Channel (Path A : 1 Mbps, Path B : 4 Mbps)}}{24}{figure.B.2}
+\contentsline {figure}{\numberline {B.3}{\ignorespaces No cross-traffic ; Slow Channel (Path A : 16 Mbps, Path B : 16 Mbps)}}{25}{figure.B.3}
+\contentsline {figure}{\numberline {B.4}{\ignorespaces No cross-traffic ; Medium Channel (Path A : 16 Mbps, Path B : 16 Mbps)}}{26}{figure.B.4}
+\contentsline {figure}{\numberline {B.5}{\ignorespaces Random cross-traffic ; Slow Channel (Path A : 4 Mbps, Path B : 1 Mbps), 50\% channel occupation}}{27}{figure.B.5}
+\contentsline {figure}{\numberline {B.6}{\ignorespaces Random cross-traffic ; Medium Channel (Path A : 4 Mbps, Path B : 1 Mbps), 50\% channel occupation}}{28}{figure.B.6}
+\contentsline {figure}{\numberline {B.7}{\ignorespaces Random cross-traffic ; Slow Channel (Path A : 16 Mbps, Path B : 16 Mbps), 50\% channel occupation}}{29}{figure.B.7}
+\contentsline {figure}{\numberline {B.8}{\ignorespaces Random cross-traffic ; Medium Channel (Path A : 16 Mbps, Path B : 16 Mbps), 50\% channel occupation}}{30}{figure.B.8}
+\contentsline {figure}{\numberline {B.9}{\ignorespaces Sample cross-traffic ; Slow Channel (Path A : 4 Mbps, Path B : 1 Mbps)}}{31}{figure.B.9}
+\contentsline {figure}{\numberline {B.10}{\ignorespaces Sample cross-traffic ; Medium Channel (Path A : 4 Mbps, Path B : 1 Mbps)}}{32}{figure.B.10}
+\contentsline {figure}{\numberline {B.11}{\ignorespaces Sample cross-traffic ; Slow Channel (Path A : 16 Mbps, Path B : 16 Mbps)}}{33}{figure.B.11}
+\contentsline {figure}{\numberline {B.12}{\ignorespaces Sample cross-traffic ; Medium Channel (Path A : 16 Mbps, Path B : 16 Mbps)}}{34}{figure.B.12}

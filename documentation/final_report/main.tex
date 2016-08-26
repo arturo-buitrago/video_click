@@ -5,7 +5,7 @@ The \textbf{Click Modular Router} is a project that was born out of a paper by E
 
 Click configuration files, which specify the flow of packets by listing the elements and their respective connections, are written in their own, simple syntax. Element files in themselves use C++, with its own implementation of the C++ Standard Library, which contains equivalents to most of the STL data structures. 
 
-The software is capable of running the router either at the user level or as a Linux kernel thread. Be advised that not all elements included in the software distribution can be executed at a kernel level. One of the original goals of this project was kernel integration of the resulting application, but unforeseen errors lead to debugging at a kernel level being out of the time scope devised for it. For further details, please read the appropriate chapter
+The software is capable of running the router either at the user level or as a Linux kernel thread. Be advised that not all elements included in the software distribution can be executed at a kernel level. One of the original goals of this project was kernel integration of the resulting application, but unforeseen errors lead to debugging at a kernel level being out of the time scope devised for it. For further details, please refer to subsection \ref{k_int}.
 
 Click has a significant learning curve, especially due to lack of documentation and online resources, so perseverance is advised.
 
@@ -20,11 +20,11 @@ Alternatives seemed to be relatively scarce and deplorably out of date. The main
 \item OpenVZ
 \end{itemize}
 
-\href{http://www.cs.arizona.edu/projects/xkernel/}{\textit{X-kernel}} is a project that was mostly maintained by researchers from the University of Arizona. Its aim is to be an \"Object-based framework for implementing network protocols\". Most of its functionality was aimed at the TCP/IP protocol, and was deemed to lack the flexibility needed in order to process packets that did not expressly follow the protocol. I was also unable to find a reference or paper from this millennium, which further made it seem nonviable for the realization of the flusher.
+\href{http://www.cs.arizona.edu/projects/xkernel/}{\textit{X-kernel}} is a project that was mostly maintained by researchers from the University of Arizona. Its aim is to be an ''Object-based framework for implementing network protocols''. Most of its functionality was aimed at the TCP/IP protocol, and was deemed to lack the flexibility needed in order to process packets that did not expressly follow the protocol. I was also unable to find a reference or paper from this millennium, which further made it seem nonviable for the realization of the flusher.
 
-\href{http://www.cs.arizona.edu/projects/scout/}{\textit{Scout}} was devised as a spin-off of X-kernel, also with support from University of Arizona personnel. It was described as being  a \"communication-oriented operating system targeted at network appliances\". Despite being operating system, which would probably grant some greater measure of speed or expediency, it was also seen as not fitting the specifications. This was in no small part due to the woeful lack of updates and the sorry state of its host website and documentation.
+\href{http://www.cs.arizona.edu/projects/scout/}{\textit{Scout}} was devised as a spin-off of X-kernel, also with support from University of Arizona personnel. It was described as being  a ''communication-oriented operating system targeted at network appliances''. Despite being operating system, which would probably grant some greater measure of speed or expediency, it was also seen as not fitting the specifications. This was in no small part due to the woeful lack of updates and the sorry state of its host website and documentation.
 
-\href{https://openvz.org/}{\textit{OpenVZ}}, as discussed more thoroughly in a research paper by Doriguzzi et al \cite{DoriguzziCorin2011}, is a \"modified Linux kernel tree supporting virtualization, isolation and resource management\", and it is mostly used for virtualization of Linux containers. It was found by the authors to be too limiting compared to Click in different aspects for their simulation work on multi-hop wireless networks.
+\href{https://openvz.org/}{\textit{OpenVZ}}, as discussed more thoroughly in a research paper by Doriguzzi et al \cite{DoriguzziCorin2011}, is a ''modified Linux kernel tree supporting virtualization, isolation and resource management'', and it is mostly used for virtualization of Linux containers. It was found by the authors to be too limiting compared to Click in different aspects for their simulation work on multi-hop wireless networks.
 
 Adding to these considerations, the paper published by Bianco et al \cite{Bianco2005}, which aims to prove the feasibility of a high performance IP router, which was more in line with our expectations of the software. It compared Click favorably in terms of reception and transmission (bit and packet) rate, among other measures, in a series of evaluations against the standard Linux network stack implementation. It especially attributes the differences to elements such as better buffer management in Click.
 
@@ -39,7 +39,7 @@ The element file contains the actual implementation of the buffer flusher. It wa
 
 The push function starts by setting a pointer to the byte in the packet header which indicates whether the packet in question belongs to a \textit{keyframe}, a video frame which was deemed to be of higher relevance and thus marked for faster forwarding. Note that the buffer flusher has no functionality to actually tell whether a frame is a \textit{keyframe} or not, that distinction should be made by a different algorithm in another part of the process altogether, before splitting the frame itself into packets. The position of the \textit{keyframe} identifier was set beforehand (see the section dealing with packet creation), but the position of the pointer can be easily changed in the element file code. 
 
-If the frame is not a \textit{keyframe}, the frame gets pushed into the awaiting queue and the number of \textit{non-keyframes} since a flush is incremented by one. If, on the contrary, the packet does identify itself as having high transmit priority, another pointer into the packet checks whether the packet is the start of a frame or not. This makes the flushing function happen only for the start of frames, assuming of course that the whole frame has the same priority, saving some CPU power. Should that not be an issue, then the second pointer can be altogether ignored. 
+If the frame is not a \textit{keyframe}, the frame gets pushed into the awaiting queue and the number of \textit{non-keyframes} since a flush is incremented by one. If, on the contrary, the packet does identify itself as having high transmit priority, another pointer into the packet checks whether the packet is the start of a frame or not. This makes the flushing function happen only for the start of frames, assuming of course that the whole frame has the same priority. With an average of 10 packets per frame, this small optimization should result in the flush taking place for only 10\% of the packets processed. Should that not be an issue, then the second pointer can be altogether ignored. 
 
 At this point, a flush of the buffer is called. This leads to two possible cases for flushing:
 \begin{enumerate}
@@ -51,11 +51,11 @@ In the first instance, the whole queue is simply purged. All incoming \textit{ke
 
 \subsection{Example}
 
-Given the following packet flow, with 0 denoting a \textit{non-keyframe} and 1 a \textit{keyframe}, with the first packet pushed beginning on the left:
+Given the following packet flow, with 0 denoting a \textit{non-keyframe} and 1 a \textit{keyframe}, with the first packet pushed beginning on the right:
 
 
 \begin{center}
-0 $\leftarrow$ 0 $\leftarrow$ 1 $\leftarrow$ 0 $\leftarrow$ 1 $\leftarrow$ 0 $\leftarrow$ 0 $\leftarrow$ 0
+0 $\rightarrow$ 0 $\rightarrow$ 0 $\rightarrow$ 1 $\rightarrow$ 0 $\rightarrow$ 1 $\rightarrow$ 0 $\rightarrow$ 0
 \end{center}
 
 The buffer flusher would execute the following with each packet, assuming no pull requests reach the buffer flusher:
@@ -77,7 +77,7 @@ This leaves the queue in the following order, with queue front at the right:
 0 $\rightarrow$ 0 $\rightarrow$ 0 $\rightarrow$ 1 $\rightarrow$ 1
 \end{center}
 
-\subsection{Kernel integration}
+\subsection{Kernel integration} \label{k_int}
 
 As previously mentioned, one of the goals of the project was the integration of the application into the Linux kernel. The relative ease with which Click allows this was also one of the reasons why it was chosen as an appropriate software. The development and early testing of the buffer flusher occurred at the user level. After the correct functionality of the application was tested at this level, I tried to run it as a kernel thread, but ran into all sorts of trouble.
 
@@ -89,9 +89,8 @@ The painstaking process of kernel thread debugging was deemed too laborious for 
 
 Part of the scope of the project included the creation of the packets from the original trace files provided by my supervisor. To preserve the integrity of test results and the functionality of the application, I sought to build the packages in a way that was unobtrusive and maintained both the size specified in the trace and all the information indicated in the files. 
 
-I decided on building the packets with a simple script with the help of \href{http://www.secdev.org/projects/scapy/}{\textit{"Scapy"}}, a Python-based packet manipulation program and corresponding module with especially accessible forging of parcels. The information was codified in simple fields of four Bytes and then filled with dummy data to achieve the correct size. These would then be sent from one machine to another through a UDP socket in order to crudely simulate the traffic coming in from the camera. This also significantly facilitates the packet capture by Click itself. The machine receiving the packages would then run the flushable buffer with the incoming information. For more details on packet structure, please see Appendix A.
+I decided on building the packets with a simple script with the help of \href{http://www.secdev.org/projects/scapy/}{\textit{"Scapy"}}, a Python-based packet manipulation program and corresponding module with especially accessible forging of parcels. The information was codified in simple fields of four bytes and then filled with dummy data to achieve the correct size. These would then be sent from one machine to another through a UDP socket in order to crudely simulate the traffic coming in from the video encoder. This also significantly facilitates the packet capture by Click itself. The machine receiving the packages would then run the flushable buffer with the incoming information. For more details on packet structure, please see Appendix A.
 
-Despite the fact that UDP does not represent a realistic implementation of the video file transfer, seeing as the files being worked on are filled with dummy data, the relative convenience overruled any other minor concerns. 
 
 \chapter{Testing}
 
@@ -156,7 +155,6 @@ The sample pattern of cross-traffic was a random packet flow synthesized with pa
 Two video traces were used and had the following properties:
 
 \begin{table}[htbp]
-\caption{Video traces used for testing}
 \break
 \setlength{\arrayrulewidth}{1mm}
 \setlength{\tabcolsep}{12pt}
@@ -174,6 +172,7 @@ Medium Channel & 15677 & 632 & 4.0\%\\
 \hline
 \end{tabular}
 }
+\caption{Video traces used for testing}
 \end{table}
 
 
@@ -186,15 +185,14 @@ Medium Channel & 15677 & 632 & 4.0\%\\
 The tests run with no cross-traffic serve primarily to set a benchmark to compare other testing conditions with, as well as corroborate the function of the application. 
 
 \begin{table}[htbp]
-\caption{No cross-traffic}
 \break
 \setlength{\arrayrulewidth}{1mm}
 \setlength{\tabcolsep}{12pt}
 \renewcommand{\arraystretch}{1.5}
  {\rowcolors{3}{whitesmoke}{silver}
-\begin{tabular}{ |p{1.375cm}|p{1.375cm}|p{1.5cm}|p{1.5cm}|p{1cm}|p{1.75cm}|p{1.75cm}| }
+\begin{tabular}{ |p{1.375cm}|p{1.375cm}|p{1.25cm}|p{1.5cm}|p{1.5cm}|p{1.75cm}|p{1.5cm}| }
 \hline
-\textcolor{orange}{BW A} (Mbps)&\textcolor{violet}{BW B} (Mbps)& Total packages & \textit{Keyframe} packages & \% & \textit{Non-Keyframe} Packages & Time elapsed (sec) \\
+\textcolor{orange}{BW A} (Mbps)&\textcolor{violet}{BW B} (Mbps)& Total packages & \textit{Keyframe} packages & Keyframe \% & \textit{Non-Keyframe} Packages & Time elapsed (sec) \\
 \hline
 \multicolumn{7}{|c|}{Slow Channel} \\
 \hline
@@ -210,27 +208,28 @@ The tests run with no cross-traffic serve primarily to set a benchmark to compar
 \hline
 \end{tabular}
 }
+\caption{No cross-traffic}
 \end{table}
 
 Looking at the numbers Table 4.2, it becomes apparent that my expectations were more or less correct for the measurements taken. In the first path configuration, all packages sent are received and the percentage of \textit{keyframes} remains unchanged; this means that no buffer flushing was necessary during processing of the packets. It does not matter whether Path B has the same bandwidth or indeed a larger one by an order of magnitude, the queue implemented in the flusher is quite capable of handling the incoming traffic without a hitch. This is also the case for the third path configuration, with the only significant difference between the two being the time elapsed for packets to be received by the packet sniffer at the end of the path. This, of course can be explained quite easily by the difference in bandwidths.
 
 The second path configuration, as expected, is much more interesting in terms of function of the buffer flusher.
 
-\begin{figure}[!ht]
-\caption{No cross-traffic; Slow Channel (Path A : 16 Mbps, Path B : 1 Mbps)}
+\begin{figure}[!h]
 \centering
 \includegraphics[scale = 0.55]{nocross_slow_16_1}
+\caption{No cross-traffic; Slow Channel (Path A : 16 Mbps, Path B : 1 Mbps), measured at the end of Path B}
 \end{figure}
 
-\begin{figure}[!ht]
-\caption{No cross-traffic; Medium Channel (Path A : 16 Mbps, Path B : 1 Mbps)}
+\begin{figure}[!h]
 \centering
 \includegraphics[scale = 0.55]{nocross_med_16_1}
+\caption{No cross-traffic; Medium Channel (Path A : 16 Mbps, Path B : 1 Mbps), measured at the end of Path B}
 \end{figure}
 
 A preliminary look at the data for this path shows a very important difference with the video traces before entering the flusher. In the case of the slow channel, the keyframe percentage jumps from 46.9\% of all incoming packets to 98.6\%, more than a twofold increase. In the case of the medium channel the increase is even more drastic, going from 4.0\% all the way up to 54.3\%, thus increasing by a factor larger than 12.
 
-Despite this, the amount of \textit{keyframe} remains constant, correctly sending the packet sniffer all packets that it receives. The time elapsed also suffers no perceptible change compared to the case with no buffer flushing, despite the high activity of the flusher.
+Despite this, the amount of \textit{keyframes} remains constant, correctly sending the packet sniffer all packets that it receives. The time elapsed also suffers no perceptible change compared to the case with no buffer flushing, despite the high activity of the flusher.
 
 A particularly interesting observation in both Figure 4.1 and 4.2 is the large gap of packets sent around the middle of the time axis. This corresponds to one of the largest buffer flushes that take place, a fact that one can easily corroborate by looking at the amount of \textit{non-keyframes} that fill that gap in other bandwidth combinations (see Appendix B). In terms of video frames, this would probably signify a relatively long scene showing very similar images from frame to frame.
 
@@ -241,15 +240,14 @@ A particularly interesting observation in both Figure 4.1 and 4.2 is the large g
 As previously mentioned, these tests were run by occupying a certain percentage of the channel capacity with random bursts of packets. In this section we discuss the case of 50\% channel occupation to illustrate overall observations. The other results are included in the repository \textit{test\_results} and exhibit very similar results.
 
 \begin{table}[htbp]
-\caption{Random cross-traffic, 50\% channel occupation}
 \break
 \setlength{\arrayrulewidth}{1mm}
 \setlength{\tabcolsep}{12pt}
 \renewcommand{\arraystretch}{1.5}
  {\rowcolors{3}{whitesmoke}{silver}
-\begin{tabular}{ |p{1.375cm}|p{1.375cm}|p{1.5cm}|p{1.5cm}|p{1cm}|p{1.75cm}|p{1.75cm}| }
+\begin{tabular}{ |p{1.375cm}|p{1.375cm}|p{1.25cm}|p{1.5cm}|p{1.5cm}|p{1.75cm}|p{1.5cm}| }
 \hline
-\textcolor{orange}{BW A} (Mbps)&\textcolor{violet}{BW B} (Mbps)& Total packages & \textit{Keyframe} packages & \% & \textit{Non-Keyframe} Packages & Time elapsed (sec) \\
+\textcolor{orange}{BW A} (Mbps)&\textcolor{violet}{BW B} (Mbps)& Total packages & \textit{Keyframe} packages & Keyframe \% & \textit{Non-Keyframe} Packages & Time elapsed (sec) \\
 \hline
 \multicolumn{7}{|c|}{Slow Channel} \\
 \hline
@@ -265,6 +263,7 @@ As previously mentioned, these tests were run by occupying a certain percentage 
 \hline
 \end{tabular}
 }
+\caption{Random cross-traffic, 50\% channel occupation}
 \end{table}
 
 As can be ascertained from Table 4.3, the operation of the flusher is extremely similar to the case without cross-traffic. The similarity between the first and third bandwidth combinations is roughly maintained, including the ratio between their two elapsed times.
@@ -272,21 +271,21 @@ As can be ascertained from Table 4.3, the operation of the flusher is extremely 
 The first of the two largest differences is the differences in time elapsed, both in the slow and the medium channel. The transmitted video traces take around twice as long to be ready to be transmitted, compared to the first case observed. This is, naturally, due to the channel occupation rate, evident in the neat correspondence between a twofold increase in time and a halving of the available channel. 
 
 
-\begin{figure}[!ht]
-\caption{Random cross-traffic; Slow Channel (Path A : 16 Mbps, Path B : 1 Mbps), 50\% channel occupation rate}
+\begin{figure}[!h]
 \centering
 \includegraphics[scale = 0.55]{rand_slow_16_1_50}
+\caption{Random cross-traffic; Slow Channel (Path A : 16 Mbps, Path B : 1 Mbps), 50\% channel occupation rate, measured at the end of Path B}
 \end{figure}
 
-\begin{figure}[!ht]
-\caption{Random cross-traffic; Medium Channel (Path A : 16 Mbps, Path B : 1 Mbps), 50\% channel occupation rate}
+\begin{figure}[!h]
 \centering
 \includegraphics[scale = 0.55]{rand_med_16_1_50}
+\caption{Random cross-traffic; Medium Channel (Path A : 16 Mbps, Path B : 1 Mbps), 50\% channel occupation rate, measured at the end of Path B}
 \end{figure}
 
 The second difference lies in the case with active buffer flushing. Note the fact that in no occasion is the absolute amount of \textit{keyframe} packets lower than expected: all of them continued to be ready to be transmitted as expected, with no drops. It is the relative percentage of \textit{keyframe} packets that sinks compared to the first set of measurements.
 
-In the slow channel, the relatively low amount of overall packages masks this phenomenon, with a change of only 1.8\% between both sets. In the medium channel, however, the difference is 25.5\%. The reason lies in the effectively lower bandwidth with which the buffer flusher receives packages from the channel. With a lower incoming rate, the flusher triggers less frequently, thus letting more \textit{non-keyframes} packages through. Thus, despite small disruption, the application still exhibits the expected function.
+In the slow channel, the relatively low amount of overall packages masks this phenomenon, with a change of only 1.8\% between both sets. In the medium channel, however, the difference is 25.5\%. The reason lies in the effectively lower bandwidth with which the buffer flusher receives packages from the channel. With a lower incoming rate, the flusher triggers less frequently, thus letting more \textit{non-keyframe} packages through. Thus, despite small disruption, the application still exhibits the expected function.
 
 \clearpage
 
@@ -305,15 +304,14 @@ A graphic representation of the sample can be seen in Figure 4.5.
 A glancing look at Table 4.4 reveals very familiar numbers, evidencing the similarity between this measurement set and the first.
 
 \begin{table}[htbp]
-\caption{Sample cross-traffic}
 \break
 \setlength{\arrayrulewidth}{1mm}
 \setlength{\tabcolsep}{12pt}
 \renewcommand{\arraystretch}{1.5}
  {\rowcolors{3}{whitesmoke}{silver}
-\begin{tabular}{ |p{1.375cm}|p{1.375cm}|p{1.5cm}|p{1.5cm}|p{1cm}|p{1.75cm}|p{1.75cm}| }
+\begin{tabular}{ |p{1.375cm}|p{1.375cm}|p{1.25cm}|p{1.5cm}|p{1.5cm}|p{1.75cm}|p{1.5cm}| }
 \hline
-\textcolor{orange}{BW A} (Mbps)&\textcolor{violet}{BW B} (Mbps)& Total packages & \textit{Keyframe} packages & \% & \textit{Non-Keyframe} Packages & Time elapsed (sec) \\
+\textcolor{orange}{BW A} (Mbps)&\textcolor{violet}{BW B} (Mbps)& Total packages & \textit{Keyframe} packages & Keyframe \% & \textit{Non-Keyframe} Packages & Time elapsed (sec) \\
 \hline
 \multicolumn{7}{|c|}{Slow Channel} \\
 \hline
@@ -329,42 +327,46 @@ A glancing look at Table 4.4 reveals very familiar numbers, evidencing the simil
 \hline
 \end{tabular}
 }
+\caption{Sample cross-traffic}
 \end{table}
 
 In this set, the phenomena already discussed in the previous two are replicated. The amount of \textit{keyframe} packets remains the same, without any drops. The percentage of \textit{keyframes} compared to the overall packets is much closer to that of the first, unhindered transmission, with a very small dent that can be explained by the rate of channel utilization.
 
-\begin{figure}[!ht]
-\caption{Sample cross-traffic ; Slow Channel (Path A : 16 Mbps, Path B : 1 Mbps)}
+\begin{figure}[!h]
 \centering
 \includegraphics[scale = 0.55]{sample_slow_16_1}
+\caption{Sample cross-traffic ; Slow Channel (Path A : 16 Mbps, Path B : 1 Mbps), measured at the end of Path B}
 \end{figure}
 
-\begin{figure}[!ht]
-\caption{Sample cross-traffic ; Medium Channel (Path A : 16 Mbps, Path B : 1 Mbps)}
+\begin{figure}[!h]
 \centering
 \includegraphics[scale = 0.55]{sample_med_16_1}
+\caption{Sample cross-traffic ; Medium Channel (Path A : 16 Mbps, Path B : 1 Mbps), measured at the end of Path B}
 \end{figure}
 
 The graphs in Figures 4.6 and 4.7 exhibit a slightly more erratic behavior compared both to the first and second measurement sets, most probably due to the fact that the background traffic exhibits more variation than in the Poisson-distributed random cross-traffic case. Despite this, the overall trends remain constant. 
 
 \clearpage
 
-\section{Discussion of results}
+\chapter{Conclusions}
 
-In the course of our testing, we have observed the performance of a buffer flusher for packets of video frames under different constraints. These have included different combinations of incoming and outgoing data rates as well as various forms of channel occupancy between packet creation and the buffer flusher. An effort was also made to leave behind documentation (both for Click and the packet creation scripts) in order to facilitate any other further work in this topic.
+In the course of our testing, we have observed the performance of a buffer flusher for packets of video frames under different constraints. These have included different combinations of incoming and outgoing data rates as well as various forms of channel occupancy between packet creation and the buffer flusher. 
 
-The developed buffer flusher has demonstrated the capacity to process large amounts of packets in varying time frames, effectively flushing those with lower priority when the need arises. None of the \textit{keyframes} were dropped in any experiment and the time added to the process by the application remained neglectable. 
+An effort was also made to leave behind documentation (both for Click and the packet creation scripts) in order to facilitate further work in this topic and alleviate the learning curve associated with the software. These include a small introduction to Click as a whole, with instructions for installation and setup, small tips for monitoring of the packet flow, as well as creation and running of new router configuration files.
+
+The developed buffer flusher has demonstrated the capacity to process large amounts of packets in varying time frames, effectively flushing those with lower priority when the need arises. Additionaly, none of the \textit{keyframes} were dropped in any experiment. 
 
 The effectiveness of the ultimate goal, which is the reduction of the overall transmitted data necessary to transfer all the \textit{keyframes} from one service to the other, can be easily calculated. Table 4.5 illustrates this using the results from the second measurement set.
 
 \begin{table}[htbp]
-\caption{File size to be sent after buffer flusher}
 \break
 \setlength{\arrayrulewidth}{1mm}
 \setlength{\tabcolsep}{12pt}
 \renewcommand{\arraystretch}{1.5}
  {\rowcolors{2}{whitesmoke}{silver}
 \begin{tabular}{ |p{3cm}|p{3cm}|p{3cm}|p{3cm}| }
+\hline
+Channel Type&Total packets&\textit{Keyframe} percentage & File size\\
 \hline
 \rowcolor{white}\multicolumn{4}{|c|}{Video traces before flushing} \\
 \hline
@@ -388,10 +390,11 @@ Medium Channel&1234&51.2\%&1.85 MB\\
 \hline
 \end{tabular}
 }
+\caption{File size to be sent after buffer flusher}
 \end{table}
 
 As is especially visible in files with a higher percentage of \textit{non-keyframes}, the difference between unadulterated and flushed files is significant, reaching up to a 92.6\% reduction in total file size to be transferred in the case with no cross-traffic.
 
-All of the observations described in this report also reflect the measurements not discussed here due to concerns for repetitiveness or readability. For the packet capture files of these other measurements please refer to the \textit{test\_results repository}.
+All of the observations described in this report also reflect the measurements not discussed here due to concerns for repetitiveness or readability. For the packet capture files of these other measurements please refer to the \textit{test\_results} repository.
 
 Thus we have fulfilled all the initial goals of the project except for the integration with the Linux kernel, which was deemed out of the time scope of this Engineer practice.
