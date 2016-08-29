@@ -1,7 +1,6 @@
 \chapter{Packet structure}
 \thispagestyle{empty}% no page number in chapter title page
 \begin{table}[htbp]
-\caption{Breakdown of packet structure by byte}
 \break
 \setlength{\arrayrulewidth}{1mm}
 \setlength{\tabcolsep}{12pt}
@@ -26,89 +25,98 @@ Dummy Data & 66 onward & Necessary filler to achieve specified length. Filled wi
 \hline
 \end{tabular}
 }
+\caption{Breakdown of packet structure by byte}
 \end{table}
 
 \chapter{Other test results}
 \thispagestyle{empty}
 
-\section{No crosstraffic}
+\clearpage
 
+\section{No Cross-traffic}
 
-\begin{figure}[!ht]
-\caption{No cross-traffic ; Slow Channel (Path A : 1 Mbps, Path B : 4 Mbps)}
+\begin{figure}[!h]
 \centering
-\includegraphics[width = \textwidth]{nocross_slow_1_4}
+\includegraphics[scale = 0.55]{nocross_slow_1_4}
+\caption{No cross-traffic ; Slow Channel (Path A : 1 Mbps, Path B : 4 Mbps), measured at the end of Path B}
+\end{figure}
+\clearpage
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale = 0.55]{nocross_med_1_4}
+\caption{No cross-traffic ; Medium Channel (Path A : 1 Mbps, Path B : 4 Mbps), measured at the end of Path B}
 \end{figure}
 
-\begin{figure}[!ht]
-\caption{No cross-traffic ; Medium Channel (Path A : 1 Mbps, Path B : 4 Mbps)}
+
+
+\begin{figure}[!h]
 \centering
-\includegraphics[width = \textwidth]{nocross_med_1_4}
+\includegraphics[scale = 0.55]{nocross_slow_16_16}
+\caption{No cross-traffic ; Slow Channel (Path A : 16 Mbps, Path B : 16 Mbps), measured at the end of Path B}
 \end{figure}
 
-
-
-\begin{figure}[!ht]
-\caption{No cross-traffic ; Slow Channel (Path A : 16 Mbps, Path B : 16 Mbps)}
+\begin{figure}[!h]
 \centering
-\includegraphics[width = \textwidth]{nocross_slow_16_16}
+\includegraphics[scale = 0.55]{nocross_med_16_16}
+\caption{No cross-traffic ; Medium Channel (Path A : 16 Mbps, Path B : 16 Mbps), measured at the end of Path B}
 \end{figure}
 
-\begin{figure}[!ht]
-\caption{No cross-traffic ; Medium Channel (Path A : 16 Mbps, Path B : 16 Mbps)}
-\centering
-\includegraphics[width = \textwidth]{nocross_med_16_16}
-\end{figure}
-
+\clearpage
 
 \section{Random Cross-traffic}
 
-\begin{figure}[!ht]
-\caption{Random cross-traffic ; Slow Channel (Path A : 4 Mbps, Path B : 1 Mbps), 50\% channel occupation}
+\begin{figure}[!h]
 \centering
-\includegraphics[width = \textwidth]{rand_slow_1_4_50}
+\includegraphics[scale = 0.55]{rand_slow_1_4_50}
+\caption{Random cross-traffic ; Slow Channel (Path A : 4 Mbps, Path B : 1 Mbps), 50\% channel occupation, measured at the end of Path B}
+\end{figure}
+\clearpage
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale = 0.55]{rand_med_1_4_50}
+\caption{Random cross-traffic ; Medium Channel (Path A : 4 Mbps, Path B : 1 Mbps), 50\% channel occupation, measured at the end of Path B}
 \end{figure}
 
-\begin{figure}[!ht]
-\caption{Random cross-traffic ; Medium Channel (Path A : 4 Mbps, Path B : 1 Mbps), 50\% channel occupation}
+\begin{figure}[!h]
 \centering
-\includegraphics[width = \textwidth]{rand_med_1_4_50}
+\includegraphics[scale = 0.55]{rand_slow_16_16_50}
+\caption{Random cross-traffic ; Slow Channel (Path A : 16 Mbps, Path B : 16 Mbps), 50\% channel occupation, measured at the end of Path B}
 \end{figure}
 
-\begin{figure}[!ht]
-\caption{Random cross-traffic ; Slow Channel (Path A : 16 Mbps, Path B : 16 Mbps), 50\% channel occupation}
+\begin{figure}[!h]
 \centering
-\includegraphics[width = \textwidth]{rand_slow_16_16_50}
+\includegraphics[scale = 0.55]{rand_med_16_16_50}
+\caption{Random cross-traffic ; Medium Channel (Path A : 16 Mbps, Path B : 16 Mbps), 50\% channel occupation, measured at the end of Path B}
 \end{figure}
 
-\begin{figure}[!ht]
-\caption{Random cross-traffic ; Medium Channel (Path A : 16 Mbps, Path B : 16 Mbps), 50\% channel occupation}
-\centering
-\includegraphics[width = \textwidth]{rand_med_16_16_50}
-\end{figure}
+\clearpage
 
 \section{Sample Crosstraffic}
 
-\begin{figure}[!ht]
-\caption{Sample cross-traffic ; Slow Channel (Path A : 4 Mbps, Path B : 1 Mbps)}
+\begin{figure}[!h]
 \centering
-\includegraphics[width = \textwidth]{sample_slow_1_4}
+\includegraphics[scale = 0.55]{sample_slow_1_4}
+\caption{Sample cross-traffic ; Slow Channel (Path A : 4 Mbps, Path B : 1 Mbps), measured at the end of Path B}
 \end{figure}
 
-\begin{figure}[!ht]
-\caption{Sample cross-traffic ; Medium Channel (Path A : 4 Mbps, Path B : 1 Mbps)}
+\clearpage
+
+\begin{figure}[!h]
 \centering
-\includegraphics[width = \textwidth]{sample_med_1_4}
+\includegraphics[scale = 0.55]{sample_med_1_4}
+\caption{Sample cross-traffic ; Medium Channel (Path A : 4 Mbps, Path B : 1 Mbps), measured at the end of Path B}
 \end{figure}
 
-\begin{figure}[!ht]
-\caption{Sample cross-traffic ; Slow Channel (Path A : 16 Mbps, Path B : 16 Mbps)}
+\begin{figure}[!h]
 \centering
-\includegraphics[width = \textwidth]{sample_slow_16_16}
+\includegraphics[scale = 0.55]{sample_slow_16_16}
+\caption{Sample cross-traffic ; Slow Channel (Path A : 16 Mbps, Path B : 16 Mbps), measured at the end of Path B}
 \end{figure}
 
-\begin{figure}[!ht]
-\caption{Sample cross-traffic ; Medium Channel (Path A : 16 Mbps, Path B : 16 Mbps)}
+\begin{figure}[!h]
 \centering
-\includegraphics[width = \textwidth]{sample_med_16_16}
+\includegraphics[scale = 0.55]{sample_med_16_16}
+\caption{Sample cross-traffic ; Medium Channel (Path A : 16 Mbps, Path B : 16 Mbps), measured at the end of Path B}
 \end{figure}

@@ -6,10 +6,10 @@ left eth0
 
 10.0.0.10
 
-para ver log
+to see log
 	dmesg
 
-para installar
+to install
 	click-install x
 	click-uninstall x
 
@@ -19,8 +19,7 @@ para installar
 
 
 
-
-para ver threads de kernel
+see kernel threads
 	ps -ef | grep "\[" 
 
 add to gdb to fix bug about some library missing (its looking for gcc in the wrong place)

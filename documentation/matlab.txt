@@ -1,3 +1,5 @@
+This is a rough draft of what I used in Matlab to make the plots. Feel free to use it as a guideline.
+
 
 niceblue = [20 121 202] ./ 255;
 nicered = [206 38 17] ./ 255;

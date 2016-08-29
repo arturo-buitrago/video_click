@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.7.7)  26 AUG 2016 16:44
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.7.7)  29 AUG 2016 18:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -892,27 +892,27 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 le_med_16_1-eps-converted-to.pdf>]
 Chapter 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 367--367
+Underfull \hbox (badness 10000) in paragraph at lines 369--369
 []|\OT1/cmr/m/it/12 Keyframe \OT1/cmr/m/n/12 per-
  []
 
 
-Underfull \hbox (badness 6825) in paragraph at lines 372--372
+Underfull \hbox (badness 6825) in paragraph at lines 374--374
 []|\OT1/cmr/m/n/12 Medium Chan-
  []
 
 
-Underfull \hbox (badness 6825) in paragraph at lines 377--377
+Underfull \hbox (badness 6825) in paragraph at lines 379--379
 []|\OT1/cmr/m/n/12 Medium Chan-
  []
 
 
-Underfull \hbox (badness 6825) in paragraph at lines 382--382
+Underfull \hbox (badness 6825) in paragraph at lines 384--384
 []|\OT1/cmr/m/n/12 Medium Chan-
  []
 
 
-Underfull \hbox (badness 6825) in paragraph at lines 387--387
+Underfull \hbox (badness 6825) in paragraph at lines 389--389
 []|\OT1/cmr/m/n/12 Medium Chan-
  []
 
@@ -925,12 +925,12 @@ Underfull \hbox (badness 6825) in paragraph at lines 387--387
  (./Appendix.tex
 Appendix A.
 
-Underfull \hbox (badness 1496) in paragraph at lines 19--20
+Underfull \hbox (badness 1496) in paragraph at lines 18--19
 []|\OT1/cmr/m/n/12 Binary vari-able coded as in-te-ger, ei-ther
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 21--21
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
 []|\OT1/cmr/m/n/12 Segment Num-
  []
 
@@ -940,6 +940,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--21
 
 ]
 Appendix B.
+[22
+
+]
 Package epstopdf Info: Source file: <figures/nocross_slow_1_4.eps>
 (epstopdf)                    date: 2016-08-08 20:44:13
 (epstopdf)                    size: 259465 bytes
@@ -952,13 +955,16 @@ ps-converted-to.pdf figures/nocross_slow_1_4.eps>
 (epstopdf)             \includegraphics on input line 40.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/nocross_slow_1_4-eps-converted-to.pdf, id=308, 715.67375pt x 817.0525p
+<figures/nocross_slow_1_4-eps-converted-to.pdf, id=312, 715.67375pt x 817.0525p
 t>
 File: figures/nocross_slow_1_4-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/nocross_slow_1_4-eps-converted-to.pdf>
 Package pdftex.def Info: figures/nocross_slow_1_4-eps-converted-to.pdf used on 
 input line 40.
-(pdftex.def)             Requested size: 460.72124pt x 525.99123pt.
+(pdftex.def)             Requested size: 393.62178pt x 449.38028pt.
+ [23
+
+ <./figures/nocross_slow_1_4-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figures/nocross_med_1_4.eps>
 (epstopdf)                    date: 2016-08-08 20:44:13
 (epstopdf)                    size: 330802 bytes
@@ -968,16 +974,16 @@ df>
 (epstopdf)                    size: 25941 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/nocross_med_1_4-ep
 s-converted-to.pdf figures/nocross_med_1_4.eps>
-(epstopdf)             \includegraphics on input line 46.
+(epstopdf)             \includegraphics on input line 47.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/nocross_med_1_4-eps-converted-to.pdf, id=309, 718.685pt x 817.0525pt>
+<figures/nocross_med_1_4-eps-converted-to.pdf, id=323, 718.685pt x 817.0525pt>
 File: figures/nocross_med_1_4-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/nocross_med_1_4-eps-converted-to.pdf>
 Package pdftex.def Info: figures/nocross_med_1_4-eps-converted-to.pdf used on i
-nput line 46.
-(pdftex.def)             Requested size: 460.72124pt x 523.797pt.
+nput line 47.
+(pdftex.def)             Requested size: 395.27797pt x 449.38028pt.
 Package epstopdf Info: Source file: <figures/nocross_slow_16_16.eps>
 (epstopdf)                    date: 2016-08-09 00:43:43
 (epstopdf)                    size: 257156 bytes
@@ -987,16 +993,20 @@ o.pdf>
 (epstopdf)                    size: 28249 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/nocross_slow_16_16
 -eps-converted-to.pdf figures/nocross_slow_16_16.eps>
-(epstopdf)             \includegraphics on input line 54.
+(epstopdf)             \includegraphics on input line 55.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/nocross_slow_16_16-eps-converted-to.pdf, id=310, 718.685pt x 817.0525p
+<figures/nocross_slow_16_16-eps-converted-to.pdf, id=324, 718.685pt x 817.0525p
 t>
 File: figures/nocross_slow_16_16-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/nocross_slow_16_16-eps-converted-to.pdf>
 Package pdftex.def Info: figures/nocross_slow_16_16-eps-converted-to.pdf used o
-n input line 54.
-(pdftex.def)             Requested size: 460.72124pt x 523.797pt.
+n input line 55.
+(pdftex.def)             Requested size: 395.27797pt x 449.38028pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 Package epstopdf Info: Source file: <figures/nocross_med_16_16.eps>
 (epstopdf)                    date: 2016-08-08 20:55:12
 (epstopdf)                    size: 328496 bytes
@@ -1006,16 +1016,25 @@ Package epstopdf Info: Source file: <figures/nocross_med_16_16.eps>
 (epstopdf)                    size: 25667 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/nocross_med_16_16-
 eps-converted-to.pdf figures/nocross_med_16_16.eps>
-(epstopdf)             \includegraphics on input line 60.
+(epstopdf)             \includegraphics on input line 61.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/nocross_med_16_16-eps-converted-to.pdf, id=311, 718.685pt x 817.0525pt
+<figures/nocross_med_16_16-eps-converted-to.pdf, id=325, 718.685pt x 817.0525pt
 >
 File: figures/nocross_med_16_16-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/nocross_med_16_16-eps-converted-to.pdf>
 Package pdftex.def Info: figures/nocross_med_16_16-eps-converted-to.pdf used on
- input line 60.
-(pdftex.def)             Requested size: 460.72124pt x 523.797pt.
+ input line 61.
+(pdftex.def)             Requested size: 395.27797pt x 449.38028pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[24
+
+ <./figures/nocross_med_1_4-eps-converted-to.pdf>] [25 <./figures/nocross_slow_
+16_16-eps-converted-to.pdf>] [26 <./figures/nocross_med_16_16-eps-converted-to.
+pdf>]
 Package epstopdf Info: Source file: <figures/rand_slow_1_4_50.eps>
 (epstopdf)                    date: 2016-08-09 00:43:43
 (epstopdf)                    size: 257548 bytes
@@ -1025,16 +1044,19 @@ pdf>
 (epstopdf)                    size: 27874 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/rand_slow_1_4_50-e
 ps-converted-to.pdf figures/rand_slow_1_4_50.eps>
-(epstopdf)             \includegraphics on input line 69.
+(epstopdf)             \includegraphics on input line 71.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/rand_slow_1_4_50-eps-converted-to.pdf, id=312, 721.69624pt x 817.0525p
+<figures/rand_slow_1_4_50-eps-converted-to.pdf, id=364, 721.69624pt x 817.0525p
 t>
 File: figures/rand_slow_1_4_50-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/rand_slow_1_4_50-eps-converted-to.pdf>
 Package pdftex.def Info: figures/rand_slow_1_4_50-eps-converted-to.pdf used on 
-input line 69.
-(pdftex.def)             Requested size: 460.72124pt x 521.5903pt.
+input line 71.
+(pdftex.def)             Requested size: 396.93416pt x 449.38028pt.
+ [27
+
+ <./figures/rand_slow_1_4_50-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figures/rand_med_1_4_50.eps>
 (epstopdf)                    date: 2016-08-09 00:43:43
 (epstopdf)                    size: 333106 bytes
@@ -1044,16 +1066,16 @@ df>
 (epstopdf)                    size: 26110 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/rand_med_1_4_50-ep
 s-converted-to.pdf figures/rand_med_1_4_50.eps>
-(epstopdf)             \includegraphics on input line 75.
+(epstopdf)             \includegraphics on input line 78.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/rand_med_1_4_50-eps-converted-to.pdf, id=313, 718.685pt x 817.0525pt>
+<figures/rand_med_1_4_50-eps-converted-to.pdf, id=375, 718.685pt x 817.0525pt>
 File: figures/rand_med_1_4_50-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/rand_med_1_4_50-eps-converted-to.pdf>
 Package pdftex.def Info: figures/rand_med_1_4_50-eps-converted-to.pdf used on i
-nput line 75.
-(pdftex.def)             Requested size: 460.72124pt x 523.797pt.
+nput line 78.
+(pdftex.def)             Requested size: 395.27797pt x 449.38028pt.
 Package epstopdf Info: Source file: <figures/rand_slow_16_16_50.eps>
 (epstopdf)                    date: 2016-08-09 00:43:43
 (epstopdf)                    size: 256530 bytes
@@ -1063,16 +1085,20 @@ o.pdf>
 (epstopdf)                    size: 28251 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/rand_slow_16_16_50
 -eps-converted-to.pdf figures/rand_slow_16_16_50.eps>
-(epstopdf)             \includegraphics on input line 81.
+(epstopdf)             \includegraphics on input line 84.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/rand_slow_16_16_50-eps-converted-to.pdf, id=314, 737.75626pt x 817.052
+<figures/rand_slow_16_16_50-eps-converted-to.pdf, id=376, 737.75626pt x 817.052
 5pt>
 File: figures/rand_slow_16_16_50-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/rand_slow_16_16_50-eps-converted-to.pdf>
 Package pdftex.def Info: figures/rand_slow_16_16_50-eps-converted-to.pdf used o
-n input line 81.
-(pdftex.def)             Requested size: 460.72124pt x 510.23268pt.
+n input line 84.
+(pdftex.def)             Requested size: 405.7672pt x 449.38028pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 Package epstopdf Info: Source file: <figures/rand_med_16_16_50.eps>
 (epstopdf)                    date: 2016-08-09 00:43:43
 (epstopdf)                    size: 330269 bytes
@@ -1082,16 +1108,25 @@ Package epstopdf Info: Source file: <figures/rand_med_16_16_50.eps>
 (epstopdf)                    size: 25885 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/rand_med_16_16_50-
 eps-converted-to.pdf figures/rand_med_16_16_50.eps>
-(epstopdf)             \includegraphics on input line 87.
+(epstopdf)             \includegraphics on input line 90.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/rand_med_16_16_50-eps-converted-to.pdf, id=315, 718.685pt x 817.0525pt
+<figures/rand_med_16_16_50-eps-converted-to.pdf, id=377, 718.685pt x 817.0525pt
 >
 File: figures/rand_med_16_16_50-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/rand_med_16_16_50-eps-converted-to.pdf>
 Package pdftex.def Info: figures/rand_med_16_16_50-eps-converted-to.pdf used on
- input line 87.
-(pdftex.def)             Requested size: 460.72124pt x 523.797pt.
+ input line 90.
+(pdftex.def)             Requested size: 395.27797pt x 449.38028pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[28
+
+ <./figures/rand_med_1_4_50-eps-converted-to.pdf>] [29 <./figures/rand_slow_16_
+16_50-eps-converted-to.pdf>] [30 <./figures/rand_med_16_16_50-eps-converted-to.
+pdf>]
 Package epstopdf Info: Source file: <figures/sample_slow_1_4.eps>
 (epstopdf)                    date: 2016-08-09 01:18:08
 (epstopdf)                    size: 258606 bytes
@@ -1101,16 +1136,19 @@ df>
 (epstopdf)                    size: 28241 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/sample_slow_1_4-ep
 s-converted-to.pdf figures/sample_slow_1_4.eps>
-(epstopdf)             \includegraphics on input line 95.
+(epstopdf)             \includegraphics on input line 100.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/sample_slow_1_4-eps-converted-to.pdf, id=316, 715.67375pt x 817.0525pt
+<figures/sample_slow_1_4-eps-converted-to.pdf, id=417, 715.67375pt x 817.0525pt
 >
 File: figures/sample_slow_1_4-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/sample_slow_1_4-eps-converted-to.pdf>
 Package pdftex.def Info: figures/sample_slow_1_4-eps-converted-to.pdf used on i
-nput line 95.
-(pdftex.def)             Requested size: 460.72124pt x 525.99123pt.
+nput line 100.
+(pdftex.def)             Requested size: 393.62178pt x 449.38028pt.
+ [31
+
+ <./figures/sample_slow_1_4-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figures/sample_med_1_4.eps>
 (epstopdf)                    date: 2016-08-09 01:18:08
 (epstopdf)                    size: 331737 bytes
@@ -1120,15 +1158,15 @@ f>
 (epstopdf)                    size: 25692 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/sample_med_1_4-eps
 -converted-to.pdf figures/sample_med_1_4.eps>
-(epstopdf)             \includegraphics on input line 101.
+(epstopdf)             \includegraphics on input line 108.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/sample_med_1_4-eps-converted-to.pdf, id=317, 715.67375pt x 817.0525pt>
+<figures/sample_med_1_4-eps-converted-to.pdf, id=429, 715.67375pt x 817.0525pt>
 File: figures/sample_med_1_4-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/sample_med_1_4-eps-converted-to.pdf>
 Package pdftex.def Info: figures/sample_med_1_4-eps-converted-to.pdf used on in
-put line 101.
-(pdftex.def)             Requested size: 460.72124pt x 525.99123pt.
+put line 108.
+(pdftex.def)             Requested size: 393.62178pt x 449.38028pt.
 Package epstopdf Info: Source file: <figures/sample_slow_16_16.eps>
 (epstopdf)                    date: 2016-08-09 01:18:08
 (epstopdf)                    size: 256078 bytes
@@ -1138,16 +1176,20 @@ Package epstopdf Info: Source file: <figures/sample_slow_16_16.eps>
 (epstopdf)                    size: 28263 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/sample_slow_16_16-
 eps-converted-to.pdf figures/sample_slow_16_16.eps>
-(epstopdf)             \includegraphics on input line 107.
+(epstopdf)             \includegraphics on input line 114.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/sample_slow_16_16-eps-converted-to.pdf, id=318, 715.67375pt x 817.0525
+<figures/sample_slow_16_16-eps-converted-to.pdf, id=430, 715.67375pt x 817.0525
 pt>
 File: figures/sample_slow_16_16-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/sample_slow_16_16-eps-converted-to.pdf>
 Package pdftex.def Info: figures/sample_slow_16_16-eps-converted-to.pdf used on
- input line 107.
-(pdftex.def)             Requested size: 460.72124pt x 525.99123pt.
+ input line 114.
+(pdftex.def)             Requested size: 393.62178pt x 449.38028pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 Package epstopdf Info: Source file: <figures/sample_med_16_16.eps>
 (epstopdf)                    date: 2016-08-09 01:18:08
 (epstopdf)                    size: 319908 bytes
@@ -1157,43 +1199,40 @@ pdf>
 (epstopdf)                    size: 24303 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/sample_med_16_16-e
 ps-converted-to.pdf figures/sample_med_16_16.eps>
-(epstopdf)             \includegraphics on input line 113.
+(epstopdf)             \includegraphics on input line 120.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/sample_med_16_16-eps-converted-to.pdf, id=319, 715.67375pt x 817.0525p
+<figures/sample_med_16_16-eps-converted-to.pdf, id=431, 715.67375pt x 817.0525p
 t>
 File: figures/sample_med_16_16-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/sample_med_16_16-eps-converted-to.pdf>
 Package pdftex.def Info: figures/sample_med_16_16-eps-converted-to.pdf used on 
-input line 113.
-(pdftex.def)             Requested size: 460.72124pt x 525.99123pt.
-) [22
+input line 120.
+(pdftex.def)             Requested size: 393.62178pt x 449.38028pt.
 
-] [23 <./figures/nocross_slow_1_4-eps-converted-to.pdf>] [24 <./figures/nocross
-_med_1_4-eps-converted-to.pdf>] [25 <./figures/nocross_slow_16_16-eps-converted
--to.pdf>] [26 <./figures/nocross_med_16_16-eps-converted-to.pdf>] [27 <./figure
-s/rand_slow_1_4_50-eps-converted-to.pdf>] [28 <./figures/rand_med_1_4_50-eps-co
-nverted-to.pdf>]
-[29 <./figures/rand_slow_16_16_50-eps-converted-to.pdf>] [30 <./figures/rand_me
-d_16_16_50-eps-converted-to.pdf>] [31 <./figures/sample_slow_1_4-eps-converted-
-to.pdf>] [32 <./figures/sample_med_1_4-eps-converted-to.pdf>] [33 <./figures/sa
-mple_slow_16_16-eps-converted-to.pdf>] [34 <./figures/sample_med_16_16-eps-conv
-erted-to.pdf>] (./report.lof)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) [32
+
+ <./figures/sample_med_1_4-eps-converted-to.pdf>] [33 <./figures/sample_slow_16
+_16-eps-converted-to.pdf>] [34 <./figures/sample_med_16_16-eps-converted-to.pdf
+>] (./report.lof [35
+
+
+])
 \tf@lof=\write5
 \openout5 = `report.lof'.
 
- [35
-
-
-] (./report.lot)
+ [36] (./report.lot)
 \tf@lot=\write6
 \openout6 = `report.lot'.
 
- (./report.bbl [36
+ (./report.bbl [37
 
 ])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 120.
- [37
+ [38
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 120.
@@ -1202,43 +1241,30 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 120.
 (./Appendix.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 120.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 120.
-
-
-Package rerunfilecheck Warning: File `report.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `report.out':
-(rerunfilecheck)             Before: F186AA2E08EDA7AA68E65AE4318AD911;1362
-(rerunfilecheck)             After:  E8B6A03C7F3D46F303AC9B336DDE648C;1341.
+Package rerunfilecheck Info: File `report.out' has not changed.
+(rerunfilecheck)             Checksum: 7B31AA6136446828E52E478EFD6DD509;1342.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 120.
  ) 
 Here is how much of TeX's memory you used:
- 7551 strings out of 493304
- 114284 string characters out of 6139872
+ 7550 strings out of 493304
+ 114269 string characters out of 6139872
  233908 words of memory out of 5000000
  10729 multiletter control sequences out of 15000+600000
  11033 words of font info for 38 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 45i,11n,45p,873b,390s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{table.4.5} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.4.2} has been referenced but does not exist
-, replaced by a fixed one
-
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmss17.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmti12.pfb>
-Output written on report.pdf (40 pages, 574099 bytes).
+ 45i,11n,45p,873b,481s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmti12.pfb>
+Output written on report.pdf (41 pages, 575885 bytes).
 PDF statistics:
- 574 PDF objects out of 1000 (max. 8388607)
- 475 compressed objects within 5 object streams
- 105 named destinations out of 1000 (max. 500000)
+ 584 PDF objects out of 1000 (max. 8388607)
+ 484 compressed objects within 5 object streams
+ 104 named destinations out of 1000 (max. 500000)
  285 words of extra memory for PDF output out of 10000 (max. 10000000)
 
